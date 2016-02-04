@@ -46,7 +46,6 @@ integrations:
     - integrationName: email
       type: email
       recipients:
-        #- revathi@shippable.com
         - ankul@shippable.com
       branches:
        only
