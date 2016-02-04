@@ -45,8 +45,7 @@ integrations:
   notifications:
     - integrationName: email
       type: email
-      recipients:
-        - ankul@shippable.com
+      recipients: ankul@shippable.com
       branches:
        only
         - master
