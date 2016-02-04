@@ -40,3 +40,18 @@ deploy:
   pre_build:
     - ls
     - ls -al
+  
+integrations:
+  notifications:
+    - integrationName: email
+      type: email
+      recipients:
+        #- revathi@shippable.com
+        - ankul@shippable.com
+      branches:
+       only
+        - master
+        - test_341
+      on_success: always
+      on_failure: always
+      on_start: always
