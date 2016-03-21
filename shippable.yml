@@ -53,3 +53,4 @@ integrations:
         - test_341
       on_success: always
       on_failure: always
+      on_start: always
