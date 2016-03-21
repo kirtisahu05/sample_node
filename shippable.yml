@@ -17,7 +17,7 @@ env:
 
 build:
   pre_ci:
-    - echo "true3"
+    - echo "true4"
 
   pre_ci_boot:
     image_name: kanthchandra/sample_node
