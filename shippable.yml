@@ -1,4 +1,3 @@
-# Language setting
 language: python
 
 env:
@@ -23,6 +22,7 @@ build:
   ci:
     - apt-get install build-essential libssl-dev
     - curl https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
+    - config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
     - source ~/.profile
     - nvm --version
     - nvm install 4.2.3
