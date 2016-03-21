@@ -28,7 +28,9 @@ build:
   ci:
     - ps -eax
     - ls -al
+    - nvm install 4.2.3
     - node --version
+    
 
   post_ci:
     - echo "true"
