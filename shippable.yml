@@ -41,14 +41,9 @@ deploy:
   
 integrations:
   notifications:
-    - integrationName: email
-      type: email
-      recipients: 
-        - ankul@shippable.com
-      branches:
-       only
-        - master
-        - test_341
-      on_success: always
-      on_failure: always
-      on_start: always
+    - integrationName: hip-1
+      type: hipchat
+      recipients:
+        - "#Ship-aye"   
+        - "@ankul"
+      
