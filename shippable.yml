@@ -44,5 +44,6 @@ integrations:
     - integrationName: hip-1
       type: hipchat
       recipients:
-        - "#Ship-aye"   
+        - "#Ship-aye"
+      on_success: always  
       
