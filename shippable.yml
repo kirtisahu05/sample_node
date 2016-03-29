@@ -45,5 +45,6 @@ integrations:
       type: hipchat
       recipients:
         - "#Ship-aye"
+        - "@ankul"
       on_success: always  
       
