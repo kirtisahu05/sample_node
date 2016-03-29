@@ -45,5 +45,4 @@ integrations:
       type: hipchat
       recipients:
         - "#Ship-aye"   
-        - "@ankul"
       
