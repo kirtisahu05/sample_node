@@ -45,6 +45,7 @@ integrations:
       type: email
       recipients: 
         - ankul@shippable.com
+        - ankulkumar001@gmail.com
       branches:
        only
         - master
@@ -52,3 +53,4 @@ integrations:
       on_success: always
       on_failure: always
       on_start: always
+      
