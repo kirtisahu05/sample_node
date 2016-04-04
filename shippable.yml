@@ -1,4 +1,4 @@
-language: python
+language: none
 
 env:
   global:
@@ -14,7 +14,7 @@ build:
     - echo "true4"
 
   pre_ci_boot:
-    image_name: drydock/u14rub
+    image_name: drydock/u12cpp
     image_tag: prod
     pull: false
     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
