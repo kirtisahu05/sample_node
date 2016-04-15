@@ -6,6 +6,11 @@ env:
     - FOO=FUBU
     
 build:
+  pre_ci_boot:
+    image_name: scriptnull/sample_node
+    image_tag: beta.dtr.3
+    pull: true
+    
   ci:
     - ps -eax
     - ls -al
