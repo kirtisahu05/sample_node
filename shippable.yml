@@ -1,51 +1,21 @@
-language: python
+# Language setting
+language: node_js
 
 env:
   global:
     - FOO=FUBU
-    - FO1=BUBU
-    - BOO=GUBU
-
-  matrix:
-    - M1=ONE
-
-build:
-  pre_ci:
-    - echo "true4"
-
-  pre_ci_boot:
-    image_name: drydock/u14rub
-    image_tag: prod
-    pull: false
-    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
-
-  ci:
-    - apt-get install build-essential libssl-dev
-    - curl https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
-    - config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
-    - source ~/.profile
-    - nvm --version
-    - nvm install 4.2.3
-    - node --version
     
+build:
+  ci:
+    - ps -eax
+    - ls -al
 
   post_ci:
-    - echo "true"
+    - echo "post ci stage"
+    - docker build -t="ship-dtr.in/scriptnull/sample_node:beta.$BRANCH.$BUILD_NUMBER" .
+    - docker push "ship-dtr.in/scriptnull/sample_node:beta.$BRANCH.$BUILD_NUMBER"
 
-  smoke_test:
-    - sudo ls /
-
-deploy:
-  pre_build:
-    - ls
-  
 integrations:
-  notifications:
-    - integrationName: email
-      type: email
-      recipients: 
-        - ankul@shippable.com
-        - ankulkumar001@gmail.com
-      on_success: always
-      on_failure: always
-      on_start: always
+  hub:
+    - integrationName: "dtr-test"
+      type: "Docker Trusted Registry"
