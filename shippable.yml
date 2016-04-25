@@ -20,10 +20,7 @@ build:
     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
-    - sleep 10
-    - nvm --version
-    - nvm install 4.2.3
-    - node --version
+    - sleep 30
     
 
   post_ci:
