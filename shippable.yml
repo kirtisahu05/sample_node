@@ -1,4 +1,4 @@
-language: python
+language: none
 
 env:
   global:
@@ -6,30 +6,14 @@ env:
     - FO1=BUBU
     - BOO=GUBU
 
-  matrix:
-    - M1=ONE
-
-build:
-  pre_ci:
+infra:
+  pre_prov:
     - echo "true4"
 
-  pre_ci_boot:
-    image_name: drydock/u14rub
-    image_tag: prod
-    pull: false
-    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
-
-  ci:
-    - sleep 30
+  prov:
+    - sleep 10
     
 
-  post_ci:
+  post_prov:
     - echo "true"
-
-  smoke_test:
-    - sudo ls /
-
-deploy:
-  pre_build:
-    - ls
 
