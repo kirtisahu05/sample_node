@@ -11,7 +11,7 @@ infra:
     - echo "true4"
 
   prov:
-    - sleep 10
+    - sleep 60
     
 
   post_prov:
