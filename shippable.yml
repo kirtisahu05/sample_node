@@ -8,6 +8,7 @@ env:
 
 infra:
   pre_prov:
+    - echo $SHIPPABLE_BUILD_DIR
     - echo "true4"
 
   prov:
