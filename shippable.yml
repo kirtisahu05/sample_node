@@ -11,6 +11,6 @@ build:
   ci:
     - node --version
   pre_ci_boot:
-    image_name: ankul/u14nodpls
+    image_name: ankul/u14nodall
     image_tag: tip
     pull: true  
