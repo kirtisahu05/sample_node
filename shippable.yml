@@ -9,8 +9,7 @@ node_js:
 
 build:
   ci:
-    - postgres /usr/lib/postgresql/9.4/bin/postgres sudo -u postgres /usr/lib/postgresql/9.4/bin/postgres -c config_file=/etc/postgresql/9.4/main/postgresql.conf 5432 /var/log/postgresql/postgresql-9.4-main.log
-    - mysql /usr/bin/mysqld_safe /usr/bin/mysqld_safe 3306 /var/log/mysql/error.log
+    - node --version
   pre_ci_boot:
     image_name: ankul/u14nodpls
     image_tag: tip
