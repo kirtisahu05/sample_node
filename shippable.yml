@@ -1,35 +1,17 @@
-language: python
+language: node_js
 
-env:
-  global:
-    - FOO=FUBU
-    - FO1=BUBU
-    - BOO=GUBU
+services:
+  - mysql
+  - postgres
 
-  matrix:
-    - M1=ONE
+node_js:
+  - 0.12
 
 build:
-  pre_ci:
-    - echo "true4"
-
-  pre_ci_boot:
-    image_name: drydock/u14rub
-    image_tag: prod
-    pull: false
-    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
-
   ci:
-    - sleep 30
+    - node --version
     
-
-  post_ci:
-    - echo "true"
-
-  smoke_test:
-    - sudo ls /
-
-deploy:
-  pre_build:
-    - ls
-
+  pre_ci_boot:
+    image_name: ankul/u14nodpls
+    image_tag: tip
+    pull: true  
