@@ -10,6 +10,7 @@ env:
 build:
   pre_ci:
     - echo "true4"
+    - ls -al
     - jfrog
 
   pre_ci_boot:
