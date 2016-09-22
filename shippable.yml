@@ -19,11 +19,11 @@ build:
 
   ci:
     - sleep 3
+    - jfrog
     
 
   post_ci:
     - echo "true"
-    - jfrog
 
   smoke_test:
     - sudo ls /
