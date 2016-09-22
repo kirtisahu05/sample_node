@@ -1,10 +1,8 @@
-language: python
+language: node_js
 
 env:
   global:
     - FOO=FUBU
-    - FO1=BUBU
-    - BOO=GUBU
 
   matrix:
     - M1=ONE
@@ -14,13 +12,13 @@ build:
     - echo "true4"
 
   pre_ci_boot:
-    image_name: drydock/u14rub
+    image_name: drydock/u14nod
     image_tag: prod
     pull: false
     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
-    - sleep 30
+    - sleep 3
     
 
   post_ci:
