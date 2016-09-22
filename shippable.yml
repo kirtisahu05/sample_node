@@ -10,7 +10,6 @@ env:
 build:
   pre_ci:
     - echo "true4"
-    - jfrog
 
   pre_ci_boot:
     image_name: drydock/u14nod
@@ -24,6 +23,7 @@ build:
 
   post_ci:
     - echo "true"
+    - jfrog
 
   smoke_test:
     - sudo ls /
