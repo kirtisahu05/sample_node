@@ -32,7 +32,7 @@ integrations:
 #      on_pull_request: always
 
     - integrationName: resource-trigger-subint-2
-      type: webhook
+      type: webhooka
       payload:
       - versionName=Shippable nginx-image-3 $BUILD_NUMBER
       on_success: always
