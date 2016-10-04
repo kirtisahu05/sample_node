@@ -29,5 +29,5 @@ integrations:
       payload:
       - versionName=Shippable Build $BUILD_NUMBER
 #      on_success: change
-      on_failure: change
+      on_failure: never
 #      on_pull_request: always
