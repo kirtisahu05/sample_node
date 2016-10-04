@@ -14,7 +14,7 @@ build:
 
   ci:
     - sleep 1
-    - hmmmm
+#    - hmmmm
 
   post_ci:
     - echo "true"
