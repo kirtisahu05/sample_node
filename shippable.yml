@@ -10,14 +10,7 @@ env:
 build:
   pre_ci:
     - echo "true4"
-    - ls -al
-    - jfrog
 
-  pre_ci_boot:
-    image_name: drydock/u14nod
-    image_tag: prod
-    pull: false
-    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
     - sleep 3
@@ -28,7 +21,13 @@ build:
   smoke_test:
     - sudo ls /
 
-deploy:
-  pre_build:
-    - ls
-
+integrations:
+  notifications:
+    - integrationName: resource-allplversion #resource trigger
+      type: webhook
+      payload:
+      - versionName=Shippable Build $BUILD_NUMBER
+      on_start: always
+      on_success: always
+      on_failure: always
+      on_pull_request: always
