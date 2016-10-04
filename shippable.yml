@@ -27,6 +27,6 @@ integrations:
       type: webhook
       payload:
       - versionName=Shippable Build $BUILD_NUMBER
-      on_success: always
-      on_failure: always
-      on_pull_request: always
+      on_success: never
+#      on_failure: always
+#      on_pull_request: always
