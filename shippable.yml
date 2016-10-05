@@ -27,7 +27,7 @@ build:
     - echo "true"
 
   smoke_test:
-    - sudo ls /
+    - sudo ls -al
 
 deploy:
   pre_build:
