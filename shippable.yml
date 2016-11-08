@@ -6,8 +6,9 @@ env:
     - FOO=FUBU
     
 build:
-  ci:
+  pre_ci:
     - jfrog
+  ci:
     - ps -eax
     - ls -al
 
