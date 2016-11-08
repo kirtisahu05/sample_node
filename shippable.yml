@@ -6,11 +6,6 @@ env:
     - FOO=FUBU
     
 build:
-  pre_ci_boot:
-    image_name: ship-dtr.in/scriptnull/sample_node
-    image_tag: beta.dtr.3
-    pull: true
-    
   ci:
     - jfrog
     - ps -eax
