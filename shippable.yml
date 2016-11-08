@@ -12,15 +12,11 @@ build:
     pull: true
     
   ci:
+    - jfrog
     - ps -eax
     - ls -al
 
-  post_ci:
-    - echo "post ci stage"
-    - docker build -t="ship-dtr.in/scriptnull/sample_node:beta.$BRANCH.$BUILD_NUMBER" .
-    - docker push "ship-dtr.in/scriptnull/sample_node:beta.$BRANCH.$BUILD_NUMBER"
-
 integrations:
   hub:
-    - integrationName: "dtr-test"
-      type: "Docker Trusted Registry"
+    - integrationName: "jfrog-subint"
+      type: artifactory
