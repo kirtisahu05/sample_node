@@ -11,6 +11,8 @@ build:
   ci:
     - ps -eax
     - ls -al
+  push:
+    - jfrog
 
 integrations:
   hub:
