@@ -20,7 +20,7 @@ build:
     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
-  - echo "true1"
+  - echo "true2"
     
 
   post_ci:
