@@ -21,7 +21,7 @@ build:
 
   ci:
   - echo "true3"
-  - echo "true8"
+  - echo "true10"
     
 
   post_ci:
