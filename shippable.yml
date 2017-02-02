@@ -22,7 +22,7 @@ build:
   ci:
   - echo "true3"
   - echo "true11"
-  - sleep 100
+  - sleep 30
     
 
   post_ci:
