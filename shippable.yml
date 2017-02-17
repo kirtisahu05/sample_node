@@ -21,20 +21,20 @@ build:
   smoke_test:
     - sudo ls /
 
-integrations:
-  notifications:
-    - integrationName: resource-trigger-subint
-      type: webhook
-      payload:
-      - versionName=Shippable nginx-image-2 $BUILD_NUMBER
-      on_success: always
+#integrations:
+#  notifications:
+#    - integrationName: resource-trigger-subint
+#      type: webhook
+#      payload:
+#      - versionName=Shippable nginx-image-2 $BUILD_NUMBER
+#      on_success: always
 #      on_start: never
 #      on_pull_request: always
 
-    - integrationName: resource-trigger-subint-2
-      type: webhook
-      payload:
-      - versionName=Shippable nginx-image-3 $BUILD_NUMBER
-      on_success: always
+#    - integrationName: resource-trigger-subint-2
+#      type: webhook
+#      payload:
+#      - versionName=Shippable nginx-image-3 $BUILD_NUMBER
+#      on_success: always
 #      on_start: never
 #      on_pull_request: always
