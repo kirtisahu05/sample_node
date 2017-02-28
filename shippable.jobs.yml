@@ -1,0 +1,5 @@
+jobs:
+  - name: sample_node_runCI
+    type: runCI
+    steps:
+      - IN: sample_java_runCI
