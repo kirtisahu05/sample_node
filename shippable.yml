@@ -14,6 +14,8 @@ build:
 
   ci:
     - sleep 1
+    - echo "versionName=$BRANCH.$BUILD_NUMBER" >> $JOB_STATE/nginx-image-params.env;
+    - echo "versionName=$BRANCH.$BUILD_NUMBER" >> $JOB_STATE/params-params.env;
 
   post_ci:
     - echo "true"
