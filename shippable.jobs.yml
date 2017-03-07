@@ -10,7 +10,7 @@ jobs:
       - script: echo "successfully completed"
       - NOTIFY: slack-notifications
 
-  - name: sample_node_runCI
+  - name: sample_java_runCI
     type: runCI
     steps:
       - IN: runSh-Job
