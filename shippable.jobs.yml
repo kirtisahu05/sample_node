@@ -12,6 +12,8 @@ jobs:
 
   - name: sample_node_runCI
     type: runCI
+    steps:
+      - IN: runSh-Job
     on_success:
       - script: echo "successfully completed"
       - NOTIFY: slack-notifications
