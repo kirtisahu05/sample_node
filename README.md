@@ -1,6 +1,7 @@
 ### provision custom nodes
 
 Please follow these steps to provision a custom node
+
 1. clone this project
 2. update `config.json` to have correct values.
     a. `SHIPPABLE_API_TOKEN` is your apiToken.
