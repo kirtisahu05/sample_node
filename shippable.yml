@@ -9,7 +9,7 @@ env:
 
 build:
   pre_ci:
-    - echo "true_7"
+    - echo "true_8"
 
 
   ci:
