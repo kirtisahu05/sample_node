@@ -14,10 +14,6 @@ build:
 
   ci:
     - sleep 3
-    - echo "versionName=$BRANCH.$BUILD_NUMBER" >> $JOB_STATE/nginx-image-params.env;
-    - echo "MONGO_API_URL=$BRANCH.$BUILD_NUMBER" >> $JOB_STATE/params-params.env;
-    - echo "versionName=$BRANCH.$BUILD_NUMBER" >> $JOB_STATE/params-params.env;
-    - cat $JOB_STATE/params-params.env
 
   post_ci:
     - echo "true"
