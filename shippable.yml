@@ -13,7 +13,7 @@ build:
 
 
   ci:
-    - sleep 60
+    - sleep 1
 
   post_ci:
     - echo "true"
