@@ -13,7 +13,7 @@ build:
 
 
   ci:
-    #- failing it
+    - failing it
     - sleep 60
 
   post_ci:
