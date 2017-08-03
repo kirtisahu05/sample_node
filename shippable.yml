@@ -13,8 +13,8 @@ build:
 
 
   ci:
-    - failing it
-    - sleep 60
+    #- failing it
+    - sleep 1
 
   post_ci:
     - echo "true"
