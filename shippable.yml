@@ -3,6 +3,7 @@ language: none
 build:
   pre_ci:
     - echo "true4"
+    - jfrog rt u package.json test-repository-local
 
   ci:
     - ls -al
@@ -10,8 +11,6 @@ build:
   post_ci:
     - echo "true"
     
-  push:
-    - jfrog rt u package.json test-repository-local
 
 deploy:
   pre_build:
