@@ -1,17 +1,21 @@
-language: python
-
-services:
-  - mysql
-  - postgres
-
-python:
-  - 3.5
+language: none
 
 build:
-  ci:
-    - python --version
+  pre_ci:
+    - echo "true4"
 
-  pre_ci_boot:
-    image_name: ankul/u14pytpls
-    image_tag: tip
-    pull: true  
+  ci:
+    - jfrog rt u package.json test-repository-local
+    - ls -al
+
+  post_ci:
+    - echo "true"
+
+deploy:
+  pre_build:
+    - ls
+
+integrations:
+  hub:
+    - integrationName: jfrog-integration
+      type: artifactory
