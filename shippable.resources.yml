@@ -1,7 +1,8 @@
 resources:
-  - name: slack-notifications
-    type: notification
-    integration: slack-subint
+  - name: nginx-prod11
+    type: image
+    integration: "docker-subint"
     pointer:
-      recipients:
-        - "#test-5148"
+      sourceName: "ankul/nginx"
+    seed:
+      versionName: prod.11
