@@ -1,7 +1,7 @@
 language: node_js
 
 architecture: aarch64
-os: Ubuntu_16.04
+os: Ubuntu_17.04
 
 env:
   global:
