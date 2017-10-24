@@ -1,7 +1,7 @@
 language: node_js
 
-architecture: x86_64_1
-os: Ubuntu_14.04
+architecture: x86_64
+os: Ubuntu_17.04
 
 env:
   global:
