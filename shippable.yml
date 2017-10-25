@@ -9,6 +9,7 @@ env:
 
   matrix:
     - M1=ONE
+    - m2=TWO
 
 build:
   pre_ci:
