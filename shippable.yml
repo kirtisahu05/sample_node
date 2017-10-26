@@ -1,6 +1,6 @@
 language: node_js
 
-architecture: aarch64
+architecture: aarch64_1
 os: Ubuntu_16.04
 
 env:
