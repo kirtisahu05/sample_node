@@ -1,5 +1,7 @@
 language: node_js
 
+os: Ubuntu_16.04
+
 env:
   global:
     - FOO=FUBU
