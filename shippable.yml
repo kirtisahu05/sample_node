@@ -1,5 +1,7 @@
 language: node_js
 
+architecture: x86_64
+
 env:
   global:
     - FOO=FUBU
