@@ -1,5 +1,16 @@
 jobs:
-  - name: runSh-Job
+  - name: runSh-Job-1_sample_node
+    type: runSh
+    steps:
+      - IN: runSh-Job-2
+      - TASK:
+        - script: sudo apt-get install tree
+        - script: tree -F IN
+        - script: sleep 3
+    on_success:
+      - script: echo "successfully completed"
+      
+  - name: runSh-Job-2_sample_node
     type: runSh
     steps:
       - TASK:
@@ -7,13 +18,4 @@ jobs:
         - script: tree -F IN
         - script: sleep 3
     on_success:
-      - script: echo "successfully completed"
-      - NOTIFY: slack-notifications
-
-  - name: sample_java_runCI
-    type: runCI
-    steps:
-      - IN: runSh-Job
-    on_success:
-      - script: echo "successfully completed"
-      - NOTIFY: slack-notifications
+      - script: echo "successfully completed"      
