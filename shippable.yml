@@ -5,7 +5,7 @@ language: node_js
 
 env:
   global:
-    - FOO=FUBU
+    - FOO=FUBU_2
 
   matrix:
     - M1=ONE
