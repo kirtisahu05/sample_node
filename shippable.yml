@@ -19,7 +19,7 @@ build:
 
   ci:
     #- failing it
-    - sleep 10
+    - sleep 120
 
   post_ci:
     - echo "true"
