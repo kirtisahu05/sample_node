@@ -10,7 +10,10 @@ env:
   matrix:
     - M1=ONE
     - M2=TWO
-    #- M3=THREE    
+    - M3=THREE 
+    - M4=ONE
+    - M5=TWO
+    - M6=THREE     
 
 build:
   pre_ci:
@@ -19,8 +22,9 @@ build:
 
   ci:
     #- failing it
-    - sleep 40
-
+    #- sleep 40
+    - echo "true"
+    
   post_ci:
     - echo "true"
 
