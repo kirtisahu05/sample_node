@@ -31,6 +31,11 @@ build:
   smoke_test:
     - sudo ls /
 
+  cache: true
+  cache_dir_list:
+    - $SHIPPABLE_BUILD_DIR/node_modules
+
+
 #integrations:
 #  notifications:
 #    - integrationName: resource-trigger-subint
