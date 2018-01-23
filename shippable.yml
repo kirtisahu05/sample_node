@@ -1,7 +1,7 @@
 language: node_js
 
-rumtime:
-  cluster: random 
+runtime:
+  nodePool: random 
 
 env:
   global:
