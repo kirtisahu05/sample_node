@@ -9,11 +9,11 @@ env:
 
   matrix:
     - M1=ONE
-    - M2=TWO
-    - M3=THREE 
-    - M4=ONE
-    - M5=TWO
-    - M6=THREE     
+    #- M2=TWO
+    #- M3=THREE 
+    #- M4=ONE
+    #- M5=TWO
+    #- M6=THREE     
 
 build:
   pre_ci:
@@ -24,6 +24,7 @@ build:
     #- failing it
     #- sleep 40
     - echo "true"
+    - shipctl post_resource_state hiptest-img versionName "build_"$BUILD_NUMBER
     
   post_ci:
     - echo "true"
