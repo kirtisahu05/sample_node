@@ -25,7 +25,7 @@ build:
     #- sleep 40
     - echo "true"
     - docker ps
-    - shipctl post_resource_state hiptest-img versionName "build_"$BUILD_NUMBER
+    #- shipctl post_resource_state hiptest-img versionName "build_"$BUILD_NUMBER
     
   post_ci:
     - echo "true"
