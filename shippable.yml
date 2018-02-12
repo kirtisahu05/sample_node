@@ -43,7 +43,6 @@ integrations:
         - mabcd71@gmail.com
       on_success: always
 
-  notifications:
     - integrationName: irc
       type: irc
       recipients:
