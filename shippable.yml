@@ -34,13 +34,21 @@ build:
     - sudo ls /
 
 integrations:
+  #notifications:
+  #  - integrationName: email
+  #    type: email
+  #    recipients:
+  #      - ankul@shippable.com
+  #      - ankulkumar001@gmail.com
+  #      - mabcd71@gmail.com
+        
   notifications:
-    - integrationName: email
-      type: email
+    - integrationName: irc
+      type: irc
       recipients:
-        - ankul@shippable.com
-        - ankulkumar001@gmail.com
-        - mabcd71@gmail.com
+        - "chat.freenode.net#channel1"
+        - "chat.freenode.net#channel2"
+
 #integrations:
 #  notifications:
 #    - integrationName: resource-trigger-subint
