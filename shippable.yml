@@ -34,20 +34,21 @@ build:
     - sudo ls /
 
 integrations:
-  #notifications:
-  #  - integrationName: email
-  #    type: email
-  #    recipients:
-  #      - ankul@shippable.com
-  #      - ankulkumar001@gmail.com
-  #      - mabcd71@gmail.com
-        
+  notifications:
+    - integrationName: email
+      type: email
+      recipients:
+        - ankul@shippable.com
+        - ankulkumar001@gmail.com
+        - mabcd71@gmail.com
+      on_success: always
+
   notifications:
     - integrationName: irc
       type: irc
       recipients:
-        - "chat.freenode.net#channel1"
-        - "chat.freenode.net#channel2"
+        - "chat.freenode.net#akskas333"
+      on_success: always
 
 #integrations:
 #  notifications:
