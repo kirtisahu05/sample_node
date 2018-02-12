@@ -33,6 +33,13 @@ build:
   smoke_test:
     - sudo ls /
 
+integrations:
+  notifications:
+    - integrationName: email
+      type: email
+      recipients:
+        - ankul@shippable.com
+        - ankulkumar001@gmail.com
 #integrations:
 #  notifications:
 #    - integrationName: resource-trigger-subint
