@@ -46,7 +46,7 @@ integrations:
     - integrationName: irc
       type: irc
       recipients:
-        - "chat.freenode.net#yankee333"
+        - "chat.freenode.net#random4876"
       on_success: always
 
 #integrations:
