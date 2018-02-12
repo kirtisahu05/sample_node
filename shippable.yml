@@ -40,6 +40,7 @@ integrations:
       recipients:
         - ankul@shippable.com
         - ankulkumar001@gmail.com
+        - mabcd71@gmail.com
 #integrations:
 #  notifications:
 #    - integrationName: resource-trigger-subint
