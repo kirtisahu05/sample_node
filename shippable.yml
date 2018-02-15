@@ -34,22 +34,22 @@ build:
   smoke_test:
     - sudo ls /
 
-integrations:
-  notifications:
-    - integrationName: email
-      type: email
-      recipients:
-        - ankul@shippable.com
-        - ankulkumar001@gmail.com
-        - mabcd71@gmail.com
-      on_success: always
-
-    - integrationName: irc
-      type: irc
-      recipients:
-        - "chat.quakenet.org#randyorton"
-      on_success: always
-
+#integrations:
+#  notifications:
+#    - integrationName: email
+#      type: email
+#      recipients:
+#        - ankul@shippable.com
+#        - ankulkumar001@gmail.com
+#        - mabcd71@gmail.com
+#      on_success: always
+#
+#    - integrationName: irc
+#      type: irc
+#      recipients:
+#        - "chat.quakenet.org#randyorton"
+#      on_success: always
+#
 #integrations:
 #  notifications:
 #    - integrationName: resource-trigger-subint
