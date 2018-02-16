@@ -24,6 +24,7 @@ build:
     #- failing it
     #- sleep 40
     - printenv
+    - cat $BASH_ENV
     
   post_ci:
     - echo "true"
