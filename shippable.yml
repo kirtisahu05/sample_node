@@ -1,8 +1,5 @@
 language: node_js
 
-architecture: aarch64
-os: Ubuntu_16.04
-
 env:
   global:
     - FOO=FUBU_2
@@ -21,7 +18,7 @@ build:
   
   pre_ci_boot:
     image_name: ankul/u14nodall
-    image_tag: test
+    image_tag: test2
     pull: false
     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
