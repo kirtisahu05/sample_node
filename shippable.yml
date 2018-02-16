@@ -23,10 +23,7 @@ build:
   ci:
     #- failing it
     #- sleep 40
-    - apt-get update && apt-get install python
-    - echo "true"
-    - docker ps
-    - shipctl post_resource_state hiptest-img versionName "build_"$BUILD_NUMBER
+    - printenv
     
   post_ci:
     - echo "true"
