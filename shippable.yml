@@ -16,12 +16,6 @@ build:
   pre_ci:
     - echo "true_8"
   
-  pre_ci_boot:
-    image_name: ankul/u14nodall
-    image_tag: test4
-    pull: false
-    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
-
   ci:
     #- failing it
     #- sleep 40
