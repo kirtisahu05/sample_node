@@ -1,7 +1,7 @@
 language: node_js
 
 runtime:
-  nodePool: default_node_pool
+  nodePool: default_shared_node_pool
 
 env:
   global:
