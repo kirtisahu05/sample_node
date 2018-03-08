@@ -1,5 +1,8 @@
 language: node_js
 
+runtime:
+  nodePool: default_node_pool
+
 env:
   global:
     - FOO=FUBU_2
