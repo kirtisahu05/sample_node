@@ -27,7 +27,7 @@ build:
 
   ci:
     #- failing it
-    #- sleep 40
+    - sleep 30
     - printenv
     - cat $BASH_ENV
     
