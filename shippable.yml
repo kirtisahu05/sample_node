@@ -36,7 +36,7 @@ jobs:
         replicate: sample_node
       - TASK:
           name: format
-          script: echo "true" && ls -al
+          script: echo "true" && ls -al && shipctl put_resource_state sample_node_ciRepo versionName $BUILD_NUMBER
 
   - name: sample_node_runCI
     type: runCI
