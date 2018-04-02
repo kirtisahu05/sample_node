@@ -30,6 +30,7 @@ jobs:
   - name: sample_node_Static
     type: runSh
     steps:
+      - IN: sample_node_master_rSync
       - IN: sample_node
         showBuildStatus: true
       - OUT: sample_node_ciRepo
