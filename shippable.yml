@@ -1,48 +1,47 @@
 language: node_js
 
-#runtime:
-  #nodePool: default_shared_node_pool
-
 env:
   global:
     - FOO=FUBU_3
 
   matrix:
-    - M1=ONE
-    #- M2=TWO
-    #- M3=THREE 
-    #- M4=ONE
-    #- M5=TWO
-    #- M6=THREE     
+    - M1=ONE  
 
 build:
   pre_ci:
     - echo "true_8"
 
-  pre_ci_boot:
-    image_name: drydock/u16nodall
-    image_tag: v6.2.4
-    pull: false
-    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
-
   ci:
-    #- failing it
-    - sleep 30
+    - sleep 3
     - printenv
     - cat $BASH_ENV
     
   post_ci:
     - echo "true"
 
-  smoke_test:
-    - sudo ls /
+resources:
+  - name: sample_node
+    type: gitRepo
+    integration: github-subint
+    versionTemplate:
+      sourceName: ankul-shippable/sample_node
 
 jobs:
-  - name: node_runSh
+  - name: sample_node_Static
     type: runSh
     steps:
-      - TASK:     
-        - script: secs=3; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done 
+      - IN: sample_node
+        showBuildStatus: true
+      - OUT: sample_node_ciRepo
+        replicate: sample_node
+      - TASK:
+          name: format
+          script: echo "true" && ls -al
+
+  - name: sample_node_runCI
+    type: runCI
+    steps:
+      - IN: sample_node_ciRepo
 
 #integrations:
 #  notifications:
