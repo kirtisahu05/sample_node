@@ -12,6 +12,7 @@ build:
     - echo "true_8"
 
   ci:
+    - failing it
     - sleep 3
     - printenv
     - cat $BASH_ENV
