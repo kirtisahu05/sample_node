@@ -12,10 +12,8 @@ build:
     - echo "true_8"
 
   ci:
-    - failing it
-    - sleep 3
+    - if [ "$(($BUILD_NUMBER % 2))" -eq 0 ]; then failing it; fi # fail if build number is odd
     - printenv
-    - cat $BASH_ENV
     
   post_ci:
     - echo "true"
