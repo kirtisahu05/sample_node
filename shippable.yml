@@ -21,6 +21,8 @@ build:
 jobs:
   - name: sample_runSh
     type: runSh
+    runtime:
+      nodePool: random_nodes
     steps:
       - TASK:
           name: print file tree
