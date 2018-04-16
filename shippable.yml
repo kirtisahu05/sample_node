@@ -18,30 +18,13 @@ build:
   post_ci:
     - echo "true"
 
-resources:
-  - name: sample_node
-    type: gitRepo
-    integration: github-subint
-    versionTemplate:
-      sourceName: ankul-shippable/sample_node
-
 jobs:
-  - name: sample_node_Static
+  - name: sample_runSh
     type: runSh
     steps:
-      - IN: sample_node_master_rSync
-      - IN: sample_node
-        showBuildStatus: true
-      - OUT: sample_node_ciRepo
-        replicate: sample_node
       - TASK:
-          name: format
-          script: echo "true" && ls -al && shipctl put_resource_state sample_node_ciRepo versionName $BUILD_NUMBER
-
-  - name: sample_node_runCI
-    type: runCI
-    steps:
-      - IN: sample_node_ciRepo
+          name: print file tree
+          script: sudo apt-get install tree && tree
 
 #integrations:
 #  notifications:
