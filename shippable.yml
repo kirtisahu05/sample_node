@@ -41,7 +41,7 @@ jobs:
           name: print file tree
           script: sudo apt-get install tree && tree
     on_success:
- 		  - script: echo 'this is on_success step of dv-man of type manifest'
+      - script: echo 'this is on_success step of dv-man of type manifest'
       
   - name: sample_runSh_3
     type: runSh
