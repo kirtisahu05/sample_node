@@ -12,11 +12,37 @@ build:
     - echo "true_8"
 
   ci:
-    - if [ "$(($BUILD_NUMBER % 2))" -eq 0 ]; then failing it; fi # fail if build number is even
+    #- if [ "$(($BUILD_NUMBER % 2))" -eq 0 ]; then failing it; fi # fail if build number is even
     - printenv
     
   post_ci:
     - echo "true"
+
+
+integrations:
+  notifications:
+    - integrationName: "webhook-subint"
+      type: webhook
+      payload:
+        - state=$STATE
+        - repo_name=$REPO_FULL_NAME
+        - branch=$BRANCH
+        - build_number=$BUILD_NUMBER
+        - build_url=$BUILD_URL
+        - commit_message=$COMMIT_MESSAGE
+        - committer=$COMMITTER
+        - is_success=$is_success
+        - displayName=Shippable
+        - avatar=https://app.shippable.com/images/slack-aye-aye-yoga.png
+      on_success: always
+
+#    - integrationName: resource-trigger-subint-2
+#      type: webhook
+#      payload:
+#      - versionName=Shippable nginx-image-3 $BUILD_NUMBER
+#      on_success: always
+#      on_start: never
+#      on_pull_request: always
 
 jobs:
   - name: sample_runSh
@@ -51,40 +77,4 @@ jobs:
       - TASK:
           name: print file tree
           script: sudo apt-get install tree && tree
-    on_success: STRING     
-      
-    
-
-#integrations:
-#  notifications:
-#    - integrationName: email
-#      type: email
-#      recipients:
-#        - ankul@shippable.com
-#        - ankulkumar001@gmail.com
-#        - mabcd71@gmail.com
-#      on_success: always
-#
-#    - integrationName: irc
-#      type: irc
-#      recipients:
-#        - "chat.quakenet.org#randyorton"
-#      on_success: always
-#
-#integrations:
-#  notifications:
-#    - integrationName: resource-trigger-subint
-#      type: webhook
-#      payload:
-#      - versionName=Shippable nginx-image-2 $BUILD_NUMBER
-#      on_success: always
-#      on_start: never
-#      on_pull_request: always
-
-#    - integrationName: resource-trigger-subint-2
-#      type: webhook
-#      payload:
-#      - versionName=Shippable nginx-image-3 $BUILD_NUMBER
-#      on_success: always
-#      on_start: never
-#      on_pull_request: always
+    on_success: STRING   
