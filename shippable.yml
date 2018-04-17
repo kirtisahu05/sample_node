@@ -5,7 +5,7 @@ env:
     - FOO=FUBU_4
 
   matrix:
-    - M1=ONE  
+    - M1=ONE
 
 build:
   pre_ci:
@@ -13,9 +13,9 @@ build:
 
   ci:
     #- if [ "$(($BUILD_NUMBER % 2))" -eq 0 ]; then failing it; fi # fail if build number is even
-    - echo "true_ci_1"
+    - echo "true_ci_2"
     - printenv
-    
+
   post_ci:
     - echo "true"
 
@@ -58,7 +58,7 @@ jobs:
       script:
         - echo "SUCCESS"
         - tree
-        
+
   - name: sample_runSh_2
     type: runSh
     runtime:
@@ -69,7 +69,7 @@ jobs:
           script: sudo apt-get install tree && tree
     on_success:
       - script: echo 'this is on_success step of dv-man of type manifest'
-      
+
   - name: sample_runSh_3
     type: runSh
     runtime:
@@ -78,4 +78,4 @@ jobs:
       - TASK:
           name: print file tree
           script: sudo apt-get install tree && tree
-    on_success: STRING   
+    on_success: STRING
