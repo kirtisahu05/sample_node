@@ -13,7 +13,7 @@ build:
 
   ci:
     #- if [ "$(($BUILD_NUMBER % 2))" -eq 0 ]; then failing it; fi # fail if build number is even
-    - echo "true_ci_6"
+    - echo "true_ci_7"
     - printenv
 
   post_ci:
