@@ -31,7 +31,7 @@ integrations:
         - branch=$BRANCH
         - build_number=$BUILD_NUMBER
         - build_url=$BUILD_URL
-        - commit_message=$COMMIT_MESSAGE | sed 's/"/\\"/g'
+        - commit_message=$COMMIT_MESSAGE
         - committer=$COMMITTER
         - is_success=$is_success
         - displayName=Shippable
