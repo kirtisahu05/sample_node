@@ -35,6 +35,7 @@ integrations:
         - is_success=$is_success
         - displayName=Shippable
         - avatar=https://app.shippable.com/images/slack-aye-aye-yoga.png
+      on_start: always
       on_success: always
 
 #    - integrationName: resource-trigger-subint-2
