@@ -6,6 +6,7 @@ env:
 
   matrix:
     - M1=ONE
+    - M2=TWO
 
 build:
   pre_ci:
@@ -14,30 +15,31 @@ build:
   ci:
     #- if [ "$(($BUILD_NUMBER % 2))" -eq 0 ]; then failing it; fi # fail if build number is even
     - echo "true_ci_8"
-    - ls $SHIPPABLE_ARTIFACTS_DIR
+    #- ls $SHIPPABLE_ARTIFACTS_DIR
     - printenv
+    - shipctl post_resource_state image versionName "build_"$BUILD_NUMBER
 
   post_ci:
     - echo "true"
 
 
-integrations:
-  notifications:
-    - integrationName: "webhook-subint"
-      type: webhook
-      payload:
-        - state=$STATE
-        - repo_name=$REPO_FULL_NAME
-        - branch=$BRANCH
-        - build_number=$BUILD_NUMBER
-        - build_url=$BUILD_URL
-        - commit_message=$COMMIT_MESSAGE
-        - committer=$COMMITTER
-        - is_success=$is_success
-        - displayName=Shippable
-        - avatar=https://app.shippable.com/images/slack-aye-aye-yoga.png
-      on_start: always
-      on_success: always
+#integrations:
+#  notifications:
+#    - integrationName: "webhook-subint"
+#      type: webhook
+#      payload:
+#        - state=$STATE
+#        - repo_name=$REPO_FULL_NAME
+#        - branch=$BRANCH
+#        - build_number=$BUILD_NUMBER
+#       - build_url=$BUILD_URL
+##        - commit_message=$COMMIT_MESSAGE
+#       - committer=$COMMITTER
+#        - is_success=$is_success
+#        - displayName=Shippable
+#        - avatar=https://app.shippable.com/images/slack-aye-aye-yoga.png
+#      on_start: always
+#      on_success: always
 
 #    - integrationName: resource-trigger-subint-2
 #      type: webhook
@@ -61,15 +63,12 @@ jobs:
         - echo "SUCCESS"
         - tree
 
-  - name: sample_runSh_2
-    type: runSh
-    runtime:
-      nodePool: random_nodes
-    steps:
-      - TASK:
-          name: print file tree
-          script: sudo apt-get install tree && tree
-    on_success:
-      - script: echo 'this is on_success step of dv-man of type manifest'
+resources: 
+  - name: image
+    type: image
+    integration: "docker-subint"
+    pointer:
+      sourceName: "ankul/nginx"
+    seed:
+      versionName: prod.10
 
- 
