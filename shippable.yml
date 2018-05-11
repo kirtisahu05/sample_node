@@ -15,12 +15,34 @@ build:
   ci:
     #- if [ "$(($BUILD_NUMBER % 2))" -eq 0 ]; then failing it; fi # fail if build number is even
     - echo "true_ci_8"
-    #- ls $SHIPPABLE_ARTIFACTS_DIR
     - printenv
     - shipctl post_resource_state image versionName "build_"$BUILD_NUMBER
 
   post_ci:
     - echo "true"
+
+jobs:
+  - name: sample_runSh
+    type: runSh
+    steps:
+      - IN: image
+      - TASK:
+          name: print file tree
+          script: sudo apt-get install tree && tree
+
+  - name: sample_node_runCI
+    type: runCI
+    steps:
+      - OUT: image 
+
+resources: 
+  - name: image
+    type: image
+    integration: "docker-subint"
+    pointer:
+      sourceName: "ankul/nginx"
+    seed:
+      versionName: prod.10
 
 
 #integrations:
@@ -48,32 +70,3 @@ build:
 #      on_success: always
 #      on_start: never
 #      on_pull_request: always
-
-jobs:
-  - name: sample_runSh
-    type: runSh
-    runtime:
-      nodePool: random_nodes
-    steps:
-      IN: image
-      - TASK:
-          name: print file tree
-          script: sudo apt-get install tree && tree
-    on_success:
-      script:
-        - echo "SUCCESS"
-        - tree
-  - name: sample_node_runCI
-    type: runCI
-    steps:
-      - OUT: image 
-
-resources: 
-  - name: image
-    type: image
-    integration: "docker-subint"
-    pointer:
-      sourceName: "ankul/nginx"
-    seed:
-      versionName: prod.10
-
