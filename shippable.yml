@@ -55,6 +55,7 @@ jobs:
     runtime:
       nodePool: random_nodes
     steps:
+      IN: image
       - TASK:
           name: print file tree
           script: sudo apt-get install tree && tree
@@ -62,6 +63,10 @@ jobs:
       script:
         - echo "SUCCESS"
         - tree
+  - name: sample_node_runCI
+    type: runCI
+    steps:
+      - OUT: image 
 
 resources: 
   - name: image
