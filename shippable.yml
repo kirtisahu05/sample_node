@@ -29,20 +29,14 @@ jobs:
       - TASK:
           name: print file tree
           script: sudo apt-get install tree && tree
-
-  - name: sample_node_runCI
-    type: runCI
-    steps:
-      - OUT: image 
-
-resources: 
-  - name: image
-    type: image
-    integration: "docker-subint"
+          
+resources:
+  - name: test_2
+    type: gitRepo
+    integration: github-subint
     pointer:
-      sourceName: "ankul/nginx"
-    seed:
-      versionName: prod.10
+      sourceName: ankul-shippable/sample_java
+      branch: master
 
 
 #integrations:
