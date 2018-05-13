@@ -25,7 +25,6 @@ jobs:
   - name: sample_runSh
     type: runSh
     steps:
-      - IN: image
       - TASK:
           name: print file tree
           script: sudo apt-get install tree && tree
