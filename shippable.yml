@@ -6,7 +6,6 @@ env:
 
   matrix:
     - M1=ONE
-    - M2=TWO
 
 build:
   pre_ci:
@@ -16,28 +15,31 @@ build:
     #- if [ "$(($BUILD_NUMBER % 2))" -eq 0 ]; then failing it; fi # fail if build number is even
     - echo "true_ci_8"
     - printenv
-    - shipctl post_resource_state image versionName "build_"$BUILD_NUMBER
 
   post_ci:
     - echo "true"
+
+resources:
+  - name: sample_java
+    type: gitRepo
+    integration: github-subint
+    versionTemplate:
+      sourceName: ankul-shippable/sample_java
+      buildOnPullRequest: true
 
 jobs:
   - name: sample_runSh
     type: runSh
     steps:
+      - IN: sample_java
+        showBuildStatus: true
       - TASK:
           name: print file tree
-          script: sudo apt-get install tree && tree
-          
-resources:
-  - name: javaOrC_repo
-    type: gitRepo
-    integration: github-subint
-    pointer:
-      sourceName: ankul-shippable/sample_java
-      branch: master
+          script:
+            - sudo apt-get install tree && tree
+            - sleep 10
 
-
+   
 #integrations:
 #  notifications:
 #    - integrationName: "webhook-subint"
