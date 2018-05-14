@@ -34,7 +34,7 @@ resources:
     type: gitRepo
     integration: github-subint
     pointer:
-      sourceName: ankul-shippable/sample_c
+      sourceName: ankul-shippable/sample_java
       branch: master
 
 
