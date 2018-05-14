@@ -24,7 +24,7 @@ resources:
     type: gitRepo
     integration: github-subint
     versionTemplate:
-      sourceName: ankul-shippable/sample_java
+      sourceName: ankul-shippable/sample_c
       buildOnPullRequest: true
 
 jobs:
