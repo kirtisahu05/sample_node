@@ -30,7 +30,7 @@ jobs:
           script: sudo apt-get install tree && tree
           
 resources:
-  - name: test_2
+  - name: javaOrC_repo
     type: gitRepo
     integration: github-subint
     pointer:
