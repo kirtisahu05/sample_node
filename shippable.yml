@@ -27,6 +27,14 @@ resources:
       sourceName: ankul-shippable/sample_c
       buildOnPullRequest: true
 
+  - name: nginx-image
+    type: image
+    integration: "docker-subint"
+    pointer:
+      sourceName: "ankul/app"
+    seed:
+      versionName: latest
+
 jobs:
   - name: sample_runSh
     type: runSh
