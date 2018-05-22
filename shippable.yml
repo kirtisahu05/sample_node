@@ -24,16 +24,16 @@ resources:
     type: gitRepo
     integration: github-subint
     versionTemplate:
-      sourceName: ankul-shippable/sample_c
+      sourceName: ankul-shippable/sample_java
       buildOnPullRequest: true
 
   - name: nginx-image
     type: image
     integration: "docker-subint"
     pointer:
-      sourceName: "ankul/app"
+      sourceName: "ankul/nginx"
     seed:
-      versionName: latest
+      versionName: prod.10
 
 jobs:
   - name: sample_runSh
