@@ -26,6 +26,7 @@ resources:
     versionTemplate:
       sourceName: ankul-shippable/sample_java
       buildOnPullRequest: true
+      branch: master
 
   - name: nginx-image
     type: image
