@@ -41,7 +41,7 @@ jobs:
     type: runSh
     steps:
       - IN: sample_java
-        showBuildStatus: true
+      - OUT: sample_c_ciRepo
       - TASK:
           name: print file tree
           script:
