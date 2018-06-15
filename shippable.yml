@@ -20,11 +20,11 @@ build:
     - echo "true"
 
 resources:
-  - name: sample_java
+  - name: sample_node
     type: gitRepo
     integration: github-subint
     versionTemplate:
-      sourceName: ankul-shippable/sample_java
+      sourceName: ankul-shippable/sample_node
       buildOnPullRequest: true
       branch: master
 
@@ -40,8 +40,8 @@ jobs:
   - name: sample_runSh
     type: runSh
     steps:
-      - IN: sample_java
-      - OUT: sample_java_ciRepo
+      - IN: sample_node
+      - OUT: sample_node_ciRepo
       - TASK:
           name: print file tree
           script:
