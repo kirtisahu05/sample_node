@@ -28,11 +28,11 @@ resources:
       buildOnPullRequest: true
       branch: master
       
-  - name: bbs-repo
+  - name: gitlab-repo
     type: gitRepo
-    integration: bbs-subint
+    integration: gitlab-subint
     versionTemplate:
-      sourceName: ANKUL/test_1   
+      sourceName: ankul/sample_java
 
 jobs:
   - name: sample_runSh
