@@ -28,14 +28,6 @@ resources:
       buildOnPullRequest: true
       branch: master
 
-  - name: nginx-image
-    type: image
-    integration: "docker-subint"
-    pointer:
-      sourceName: "ankul/nginx"
-    seed:
-      versionName: prod.10
-
 jobs:
   - name: sample_runSh
     type: runSh
