@@ -32,7 +32,7 @@ resources:
     type: gitRepo
     integration: gitlab-subint
     versionTemplate:
-      sourceName: ankul/sample_java
+      sourceName: ankul/sample_node
 
 jobs:
   - name: sample_runSh
