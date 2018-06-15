@@ -27,6 +27,12 @@ resources:
       sourceName: ankul-shippable/sample_node
       buildOnPullRequest: true
       branch: master
+      
+  - name: bbs-repo
+    type: gitRepo
+    integration: bbs-subint
+    versionTemplate:
+      sourceName: ANKUL/test_1   
 
 jobs:
   - name: sample_runSh
