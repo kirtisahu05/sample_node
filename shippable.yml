@@ -39,7 +39,7 @@ jobs:
     type: runSh
     steps:
       - IN: sample_node
-      - OUT: sample_node_ciRepo
+      #- OUT: sample_node_ciRepo
       - TASK:
           name: print file tree
           script:
