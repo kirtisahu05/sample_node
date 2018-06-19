@@ -43,8 +43,10 @@ jobs:
       - TASK:
           name: print file tree
           script:
+            - printenv
             - sudo apt-get install tree && tree
             - sleep 10
+            - shipctl get_resource_state sample_node
 
    
 #integrations:
