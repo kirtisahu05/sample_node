@@ -13,8 +13,10 @@ build:
 
   ci:
     - printenv
-    - apt-get install tree
-    - tree
+#    - apt-get install tree
+#    - tree
+    - ls $SHIPPABLE_BUILD_DIR
+    - tar -cvf sample_node_repo.tar $SHIPPABLE_BUILD_DIR
 
   post_ci:
     - echo "true"
