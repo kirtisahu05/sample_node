@@ -5,7 +5,7 @@ build:
     - ls $SHIPPABLE_BUILD_DIR
     - TRANSFER=$(shipctl get_resource_state sample_node_runCI)
     - echo "Writing to $TRANSFER"
-    - tar cvf $TRANSFER/sample_node_repo.tar $SHIPPABLE_BUILD_DIR
+    - tar cvf --exclude=$SHIPPABLE_BUILD_DIR/node_modules $TRANSFER/sample_node_repo.tar $SHIPPABLE_BUILD_DIR
     - sha1sum $TRANSFER/sample_node_repo.tar
     - stat $TRANSFER/sample_node_repo.tar
 
