@@ -7,6 +7,7 @@ build:
     - sha1sum sample_node_repo.tar
     - stat sample_node_repo.tar
 
+
 jobs:
   - name: sample_node_runCI
     type: runCI
