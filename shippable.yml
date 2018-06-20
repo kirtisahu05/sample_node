@@ -11,6 +11,7 @@ build:
     - tree $TRANSFER
     - sha1sum $TRANSFER/sample_node_repo.tar
     - stat $TRANSFER/sample_node_repo.tar
+    - du -h $TRANSFER
 
 jobs:
   - name: sample_node_runCI
