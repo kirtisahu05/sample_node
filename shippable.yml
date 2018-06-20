@@ -2,7 +2,7 @@ language: node_js
 
 build:
   ci:
-#    - apt-get install tree
+    - apt-get install tree
     - TRANSFER=$(shipctl get_resource_state sample_node_runCI)
     - tree $TRANSFER
     - echo "Writing to $TRANSFER"
