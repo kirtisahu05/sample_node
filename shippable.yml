@@ -3,6 +3,8 @@ language: node_js
 build:
   ci:
     - ls $SHIPPABLE_BUILD_DIR
+    - TRANSFER=$(shipctl get_resource_state sample_node_runCI)
+    - echo "Writing to $TRANSFER"
     - tar -cvf sample_node_repo.tar $SHIPPABLE_BUILD_DIR
     - sha1sum sample_node_repo.tar
     - stat sample_node_repo.tar
