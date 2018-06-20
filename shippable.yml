@@ -2,10 +2,13 @@ language: node_js
 
 build:
   ci:
+    - apt-get intstall tree
     - ls $SHIPPABLE_BUILD_DIR
     - TRANSFER=$(shipctl get_resource_state sample_node_runCI)
+    - tree $TRANSFER
     - echo "Writing to $TRANSFER"
     - tar cvf $TRANSFER/sample_node_repo.tar $SHIPPABLE_BUILD_DIR
+    - tree $TRANSFER
     - sha1sum $TRANSFER/sample_node_repo.tar
     - stat $TRANSFER/sample_node_repo.tar
 
