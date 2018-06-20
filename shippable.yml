@@ -2,7 +2,7 @@ language: node_js
 
 build:
   ci:
-    - apt-get intstall tree
+    - apt-get install tree
     - ls $SHIPPABLE_BUILD_DIR
     - TRANSFER=$(shipctl get_resource_state sample_node_runCI)
     - tree $TRANSFER
