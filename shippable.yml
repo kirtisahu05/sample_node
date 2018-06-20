@@ -17,39 +17,30 @@ build:
 #    - tree
     - ls $SHIPPABLE_BUILD_DIR
     - tar -cvf sample_node_repo.tar $SHIPPABLE_BUILD_DIR
+    - sha1sum sample_node_repo.tar
+    - stat sample_node_repo.tar
 
   post_ci:
     - echo "true"
 
-resources:
-  - name: sample_node
-    type: gitRepo
-    integration: github-subint
-    versionTemplate:
-      sourceName: ankul-shippable/sample_node
-      buildOnPullRequest: true
-      branch: master
-      
-  - name: gitlab-repo
-    type: gitRepo
-    integration: gitlab-subint
-    versionTemplate:
-      sourceName: ankul/sample_node
-
 jobs:
-  - name: sample_runSh
+  - name: sample_node_runCI
+    type: runCI
+    steps: []
+
+  - name: ghPages_deploy
     type: runSh
     steps:
-      - IN: sample_node
-      #- OUT: sample_node_ciRepo
+      - IN: sample_node_runCI
+        switch: on
+      - IN: sample_node_ciRepo
+        switch: off
       - TASK:
-          name: print file tree
           script:
-            - printenv
-            - sudo apt-get install tree && tree
-            - sleep 10
-            - shipctl get_resource_state sample_node
-
+            - TRANSFER=$(shipctl get_resource_state sample_node_runCI)
+            - echo "Reading from $TRANSFER"
+            - sha1sum $TRANSFER/sample_node_repo.tar      
+            - stat $TRANSFER/sample_node_repo.tar
    
 #integrations:
 #  notifications:
