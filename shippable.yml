@@ -12,9 +12,9 @@ build:
     - echo "true_9"
 
   ci:
-    #- if [ "$(($BUILD_NUMBER % 2))" -eq 0 ]; then failing it; fi # fail if build number is even
-    - echo "true_ci_8"
     - printenv
+    - apt-get install tree
+    - tree
 
   post_ci:
     - echo "true"
