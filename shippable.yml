@@ -48,7 +48,7 @@ jobs:
             - ls -al $IN_JOB_STATE 
             - TRANSFER=$(shipctl get_resource_state in_job)
             - echo "Writing to $TRANSFER"
-            - tar cvf $TRANSFER/sample_node_repo.tar $IN_JOB_STATE
+            - tar cvf $TRANSFER/sample_node_repo.tar $SAMPLE_NODE_REPO_STATE
             - shipctl post_resource_state in_job "KEY1" "in_job_value1"
             - shipctl put_resource_state in_job "KEY2" "in_job_value2"    
             - sha1sum $TRANSFER/sample_node_repo.tar 
