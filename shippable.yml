@@ -71,8 +71,8 @@ jobs:
             - export RES_STATE_IN_FILES=/build/IN/res_state_2/state
             - echo "Reading from $RES_STATE_IN_FILES"
             - tree $RES_STATE_IN_FILES
-            #- sha1sum $RES_STATE_IN_FILES/state_2_repo.tar 
-            #- stat $RES_STATE_IN_FILES/state_2_repo.tar
+            - sha1sum $RES_STATE_IN_FILES/state_2_repo.tar 
+            - stat $RES_STATE_IN_FILES/state_2_repo.tar
             - cat $JOB_PREVIOUS_STATE/res_state_2.env
             - RES_STATE_OUT_FILES=$(shipctl get_resource_state res_state_2)
             - echo "Writing to $RES_STATE_OUT_FILES"
