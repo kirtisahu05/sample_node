@@ -19,7 +19,41 @@ build:
     - stat $TRANSFER/sample_node_repo.tar
     - du -h $TRANSFER
 
+resources:
+  - name: res_state
+    type: state
+  
+  - name: sample_node_repo
+    type: gitRepo
+    integration: github-subint
+    versionTemplate:
+      sourceName: ankul-shippable/sample_node
+      branch: master   
+
 jobs:
+  - name: sample_node_runCI
+    type: runCI
+    steps:
+      - IN: res_state
+      - OUT: res_state
+      - IN: in_job
+
+  - name: in_job
+    type: runSh
+    steps:
+      - IN: sample_node_repo
+      - TASK:
+          script:
+            - ls -al $IN_JOB_STATE 
+            - TRANSFER=$(shipctl get_resource_state in_job)
+            - echo "Writing to $TRANSFER"
+            - tar cvf $TRANSFER/sample_node_repo.tar $IN_JOB_STATE
+            - shipctl post_resource_state c_in "KEY1" "in_job_value1"
+            - shipctl put_resource_state c_in "KEY2" "c_in_value2"    
+            - sha1sum $TRANSFER/sample_node_repo.tar 
+            - stat $TRANSFER/sample_node_repo.tar
+            - cat $TRANSFER/in_job.env
+
   - name: sample_node_runCI
     type: runCI
     steps: []
