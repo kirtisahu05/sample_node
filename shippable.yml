@@ -72,13 +72,13 @@ jobs:
             - RES_STATE_OUT_FILES=$(shipctl get_resource_state res_state_2)
             - echo "Writing to $RES_STATE_OUT_FILES"
             - tar cvf $RES_STATE_OUT_FILES/state_2_repo.tar $SAMPLE_NODE_REPO_STATE
-            - shipctl post_resource_state res_state "KEY1" "res_state_2_value1"$SHIPPABLE_BUILD_NUMBER
-            - shipctl put_resource_state res_state "KEY2" "res_state_2_value2"$SHIPPABLE_BUILD_NUMBER
+            - shipctl post_resource_state res_state_2 "KEY1" "res_state_2_value1"$SHIPPABLE_BUILD_NUMBER
+            - shipctl put_resource_state res_state_2 "KEY2" "res_state_2_value2"$SHIPPABLE_BUILD_NUMBER
             - sha1sum $RES_STATE_OUT_FILES/state_2_repo.tar 
             - stat $RES_STATE_OUT_FILES/state_2_repo.tar
             - ls -al $RES_STATE_OUT_FILES
             - ls -al $RES_STATE_IN_FILES
-            - cat $TRANSFER/res_state.env
+            - cat $TRANSFER/res_state_2.env
 
   - name: sample_node_runCI
     type: runCI
