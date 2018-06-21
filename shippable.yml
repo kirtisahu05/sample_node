@@ -38,6 +38,7 @@ jobs:
   - name: sample_c_runCI
     type: runCI
     steps:
+      - sample_node_repo
       - IN: res_state
       - OUT: res_state
       - IN: in_job
