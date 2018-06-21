@@ -25,7 +25,10 @@ build:
 
 resources:
   - name: res_state
-    type: state
+    type: state  
+
+  - name: res_state_2
+    type: state  
   
   - name: sample_node_repo
     type: gitRepo
@@ -59,6 +62,23 @@ jobs:
             - sha1sum $TRANSFER/sample_node_repo.tar 
             - stat $TRANSFER/sample_node_repo.tar
             - cat $TRANSFER/in_job.env
+            - echo STATE IN-OUT TESTS
+            - export RES_STATE_IN_FILES=/build/IN/res_state_2/state
+            - echo "Reading from $RES_STATE_IN_FILES"
+            - tree $RES_STATE_IN_FILES
+            #- sha1sum $RES_STATE_IN_FILES/state_2_repo.tar 
+            #- stat $RES_STATE_IN_FILES/state_2_repo.tar
+            - cat $JOB_PREVIOUS_STATE/res_state_2.env
+            - RES_STATE_OUT_FILES=$(shipctl get_resource_state res_state_2)
+            - echo "Writing to $RES_STATE_OUT_FILES"
+            - tar cvf $RES_STATE_OUT_FILES/state_2_repo.tar $SAMPLE_NODE_REPO_STATE
+            - shipctl post_resource_state res_state "KEY1" "res_state_2_value1"$SHIPPABLE_BUILD_NUMBER
+            - shipctl put_resource_state res_state "KEY2" "res_state_2_value2"$SHIPPABLE_BUILD_NUMBER
+            - sha1sum $RES_STATE_OUT_FILES/state_2_repo.tar 
+            - stat $RES_STATE_OUT_FILES/state_2_repo.tar
+            - ls -al $RES_STATE_OUT_FILES
+            - ls -al $RES_STATE_IN_FILES
+            - cat $TRANSFER/res_state.env
 
   - name: sample_node_runCI
     type: runCI
