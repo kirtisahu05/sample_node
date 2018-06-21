@@ -50,6 +50,8 @@ jobs:
     type: runSh
     steps:
       - IN: sample_node_repo
+      - IN: res_state_2
+      - OUT: res_state_2    
       - TASK:
           script:
             - printenv
