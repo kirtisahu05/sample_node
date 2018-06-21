@@ -86,6 +86,13 @@ jobs:
             - ls -al $RES_STATE_IN_FILES
             - cat $TRANSFER/res_state_2.env
 
+  - name: standalone_runSh
+    type: runSh
+    steps:
+      - TASK:
+          script:
+            - printenv
+
   - name: sample_node_runCI
     type: runCI
     steps: []
