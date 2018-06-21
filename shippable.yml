@@ -8,6 +8,7 @@ build:
     - echo "Writing to $TRANSFER"
     - cd $SHIPPABLE_BUILD_DIR && rm -rf .git && cd -
     - tar cvf $TRANSFER/sample_node_repo.tar $SHIPPABLE_BUILD_DIR
+    - shipctl post_resource_state sample_node_runCI "HERO" "Superman"
     - ls -al $SHIPPABLE_BUILD_DIR
     - tree $TRANSFER
     - sha1sum $TRANSFER/sample_node_repo.tar
