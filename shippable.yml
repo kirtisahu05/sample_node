@@ -44,12 +44,13 @@ jobs:
       - IN: sample_node_repo
       - TASK:
           script:
+            - printenv
             - ls -al $IN_JOB_STATE 
             - TRANSFER=$(shipctl get_resource_state in_job)
             - echo "Writing to $TRANSFER"
             - tar cvf $TRANSFER/sample_node_repo.tar $IN_JOB_STATE
             - shipctl post_resource_state in_job "KEY1" "in_job_value1"
-            - shipctl put_resource_state in_job "KEY2" "c_in_value2"    
+            - shipctl put_resource_state in_job "KEY2" "in_job_value2"    
             - sha1sum $TRANSFER/sample_node_repo.tar 
             - stat $TRANSFER/sample_node_repo.tar
             - cat $TRANSFER/in_job.env
