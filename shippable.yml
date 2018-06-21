@@ -31,7 +31,7 @@ resources:
       branch: master   
 
 jobs:
-  - name: sample_node_runCI
+  - name: sample_c_runCI
     type: runCI
     steps:
       - IN: res_state
