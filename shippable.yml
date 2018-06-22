@@ -30,6 +30,14 @@ resources:
   - name: res_state_2
     type: state  
  
+  - name: nginx-image
+    type: image
+    integration: "docker-subint"
+    pointer:
+      sourceName: "ankul/app"
+    seed:
+      versionName: latest 
+ 
   - name: manifest-job
     type: manifest
     steps:
