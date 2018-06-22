@@ -30,13 +30,13 @@ resources:
   - name: res_state_2
     type: state  
  
-  - name: nginx-image
-    type: image
-    integration: "docker-subint"
-    pointer:
-      sourceName: "ankul/app"
-    seed:
-      versionName: latest
+#  - name: nginx-image
+#    type: image
+#    integration: "docker-subint"
+#    pointer:
+#      sourceName: "ankul/app"
+#    seed:
+#      versionName: latest
  
   - name: ECS-cluster
     type: cluster
