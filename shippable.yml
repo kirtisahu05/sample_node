@@ -53,17 +53,17 @@ resources:
       branch: master   
 
 jobs:
-  - name: manifest-job
-    type: manifest
-    steps:
-      - IN: nginx-image
+#  - name: manifest-job
+#    type: manifest
+#    steps:
+#      - IN: nginx-image
 
-  - name: ECS-deploy
-    type: deploy
-    method: blueGreen  
-    steps:
-      - IN: manifest-job
-      - IN: ECS-cluster
+#  - name: ECS-deploy
+#    type: deploy
+#    method: blueGreen  
+#    steps:
+#      - IN: manifest-job
+#      - IN: ECS-cluster
 
   - name: sample_c_runCI
     type: runCI
