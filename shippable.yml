@@ -36,12 +36,7 @@ resources:
     pointer:
       sourceName: "ankul/app"
     seed:
-      versionName: latest 
- 
-  - name: manifest-job
-    type: manifest
-    steps:
-      - IN: nginx-image
+      versionName: latest
  
   - name: ECS-cluster
     type: cluster
@@ -58,6 +53,11 @@ resources:
       branch: master   
 
 jobs:
+  - name: manifest-job
+    type: manifest
+    steps:
+      - IN: nginx-image
+
   - name: ECS-deploy
     type: deploy
     method: upgrade  
