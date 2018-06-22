@@ -7,8 +7,8 @@ build:
   ci:
     - apt-get install tree
     - tree $JOB_PREVIOUS_STATE
-    - sha1sum $JOB_PREVIOUS_STATE/sample_node_repo.tar 
-    - stat $JOB_PREVIOUS_STATE/sample_node_repo.tar
+    #- sha1sum $JOB_PREVIOUS_STATE/sample_node_repo.tar 
+    #- stat $JOB_PREVIOUS_STATE/sample_node_repo.tar
     - cat $JOB_PREVIOUS_STATE/sample_node_runCI.env
     - TRANSFER=$(shipctl get_resource_state sample_node_runCI)
     - tree $TRANSFER
@@ -19,8 +19,8 @@ build:
     - shipctl put_resource_state sample_node_runCI "SUPERHERO" "batman"    
     - ls -al $SHIPPABLE_BUILD_DIR
     - tree $TRANSFER
-    - sha1sum $TRANSFER/sample_node_repo.tar
-    - stat $TRANSFER/sample_node_repo.tar
+    #- sha1sum $TRANSFER/sample_node_repo.tar
+    #- stat $TRANSFER/sample_node_repo.tar
     - du -h $TRANSFER
 
 resources:
