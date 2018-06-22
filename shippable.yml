@@ -29,7 +29,19 @@ resources:
 
   - name: res_state_2
     type: state  
-  
+ 
+  - name: manifest-job
+    type: manifest
+    steps:
+      - IN: nginx-image
+ 
+  - name: ECS-cluster
+    type: cluster
+    integration: "ecs-subint"
+    versionTemplate:
+      sourceName: "ecs-cluster"
+      region: "us-west-2"
+
   - name: sample_node_repo
     type: gitRepo
     integration: github-subint
@@ -38,13 +50,20 @@ resources:
       branch: master   
 
 jobs:
+  - name: ECS-deploy
+    type: deploy
+    method: upgrade  
+    steps:
+      - IN: manifest-job
+      - IN: ECS-cluster
+
   - name: sample_c_runCI
     type: runCI
     steps:
       - IN: sample_node_repo
       - IN: res_state
       - OUT: res_state
-      - IN: in_job
+      - IN: in_job      
 
   - name: in_job
     type: runSh
