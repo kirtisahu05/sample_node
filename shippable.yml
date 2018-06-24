@@ -30,20 +30,20 @@ resources:
   - name: res_state_2
     type: state  
  
-  - name: nginx-image
-    type: image
-    integration: "docker-subint"
-    pointer:
-      sourceName: "ankul/app"
-    seed:
-      versionName: latest
+#  - name: nginx-image
+#    type: image
+#    integration: "docker-subint"
+#    pointer:
+#      sourceName: "ankul/app"
+#    seed:
+#      versionName: latest
  
-  - name: ECS-cluster
-    type: cluster
-    integration: "ecs-subint"
-    versionTemplate:
-      sourceName: "ecs-cluster"
-      region: "us-west-2"
+#  - name: ECS-cluster
+#    type: cluster
+#    integration: "ecs-subint"
+#    versionTemplate:
+#      sourceName: "ecs-cluster"
+#      region: "us-west-2"
 
   - name: sample_node_repo
     type: gitRepo
@@ -53,17 +53,17 @@ resources:
       branch: master   
 
 jobs:
-  - name: manifest-job
-    type: manifest
-    steps:
-      - IN: nginx-image
+ # - name: manifest-job
+ #   type: manifest
+ #   steps:
+ #     - IN: nginx-image
 
-  - name: ECS-deploy
-    type: deploy
-    method: blueGreen  
-    steps:
-      - IN: manifest-job
-      - IN: ECS-cluster
+ # - name: ECS-deploy
+ #   type: deploy
+ #   method: blueGreen  
+ #   steps:
+ #     - IN: manifest-job
+ #     - IN: ECS-cluster
 
   - name: sample_c_runCI
     type: runCI
