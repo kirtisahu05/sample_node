@@ -95,9 +95,7 @@ jobs:
             - stat $TRANSFER/sample_node_repo.tar
             - cat $TRANSFER/in_job.env
             - echo STATE IN-OUT TESTS
-            - ls -al /var/lib/shippable
-            - tree /var/lib/shippable
-            - export RES_STATE_IN_FILES=/var/lib/shippable/shippable_production/build/IN/res_state_2/state
+            - export RES_STATE_IN_FILES=$BUILD_DIR/IN/res_state_2/state
             - echo "Reading from $RES_STATE_IN_FILES"
             - tree $RES_STATE_IN_FILES
             - tree /var/lib/shippable/shippable_dev/build
