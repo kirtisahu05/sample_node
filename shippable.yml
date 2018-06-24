@@ -86,6 +86,8 @@ jobs:
             - ls -al $IN_JOB_STATE
             - cat $JOB_PREVIOUS_STATE/in_job.env
             - cat $JOB_PREVIOUS_STATE/res_state_2.env
+            - sha1sum $JOB_PREVIOUS_STATE/sample_node_repo.tar 
+            - stat $JOB_PREVIOUS_STATE/sample_node_repo.tar
             - TRANSFER=$(shipctl get_resource_state in_job)
             - echo "Writing to $TRANSFER"
             - tar cvf $TRANSFER/sample_node_repo.tar $SAMPLE_NODE_REPO_STATE
