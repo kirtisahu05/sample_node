@@ -7,9 +7,9 @@ build:
   ci:
     - apt-get install tree
     - tree $JOB_PREVIOUS_STATE
-    #- sha1sum $JOB_PREVIOUS_STATE/sample_node_repo.tar 
-    #- stat $JOB_PREVIOUS_STATE/sample_node_repo.tar
-    #- cat $JOB_PREVIOUS_STATE/sample_node_runCI.env
+    - sha1sum $JOB_PREVIOUS_STATE/sample_node_repo.tar 
+    - stat $JOB_PREVIOUS_STATE/sample_node_repo.tar
+    - cat $JOB_PREVIOUS_STATE/sample_node_runCI.env
     - TRANSFER=$(shipctl get_resource_state sample_node_runCI)
     - tree $TRANSFER
     - echo "Writing to $TRANSFER"
