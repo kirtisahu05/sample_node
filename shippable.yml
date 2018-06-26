@@ -30,13 +30,13 @@ resources:
   - name: res_state_2
     type: state  
  
-#  - name: nginx-image
-#    type: image
-#    integration: "docker-subint"
-#    pointer:
-#      sourceName: "ankul/app"
-#    seed:
-#      versionName: latest
+  - name: nginx-image
+    type: image
+    integration: "docker-subint"
+    pointer:
+      sourceName: "ankul/app"
+    seed:
+      versionName: latest
  
 #  - name: ECS-cluster
 #    type: cluster
@@ -45,18 +45,18 @@ resources:
 #      sourceName: "ecs-cluster"
 #      region: "us-west-2"
 
-  - name: sample_node_repo
-    type: gitRepo
-    integration: github-subint
-    versionTemplate:
-      sourceName: ankul-shippable/sample_node
-      branch: master   
+#  - name: sample_node_repo
+#    type: gitRepo
+#    integration: github-subint
+#    versionTemplate:
+#      sourceName: ankul-shippable/sample_node
+#      branch: master   
 
 jobs:
- # - name: manifest-job
- #   type: manifest
- #   steps:
- #     - IN: nginx-image
+  - name: manifest-job
+    type: manifest
+    steps:
+      - IN: nginx-image
 
  # - name: ECS-deploy
  #   type: deploy
@@ -65,55 +65,55 @@ jobs:
  #     - IN: manifest-job
  #     - IN: ECS-cluster
 
-  - name: sample_c_runCI
-    type: runCI
-    steps:
-      - IN: sample_node_repo
-      - IN: res_state
-      - OUT: res_state
-      - IN: in_job      
+#  - name: sample_c_runCI
+#    type: runCI
+#    steps:
+#      - IN: sample_node_repo
+#      - IN: res_state
+#      - OUT: res_state
+#      - IN: in_job      
 
-  - name: in_job
-    type: runSh
-    steps:
-      - IN: sample_node_repo
-      - IN: res_state_2
-      - OUT: res_state_2    
-      - TASK:
-          script:
-            - printenv
-            - apt-get install tree
-            - ls -al $IN_JOB_STATE
-            - cat $JOB_PREVIOUS_STATE/in_job.env
-            - cat $JOB_PREVIOUS_STATE/res_state_2.env
-            - sha1sum $JOB_PREVIOUS_STATE/sample_node_repo.tar 
-            - stat $JOB_PREVIOUS_STATE/sample_node_repo.tar
-            - TRANSFER=$(shipctl get_resource_state in_job)
-            - echo "Writing to $TRANSFER"
-            - tar cvf $TRANSFER/sample_node_repo.tar $SAMPLE_NODE_REPO_STATE
-            - shipctl post_resource_state in_job "KEY1" "in_job_value1"$BUILD_NUMBER
-            - shipctl put_resource_state in_job "KEY2" "in_job_value2"$BUILD_NUMBER   
-            - sha1sum $TRANSFER/sample_node_repo.tar 
-            - stat $TRANSFER/sample_node_repo.tar
-            - cat $TRANSFER/in_job.env
-            - echo STATE IN-OUT TESTS
-            - export RES_STATE_IN_FILES=$BUILD_DIR/IN/res_state_2/state
-            - echo "Reading from $RES_STATE_IN_FILES"
-            - tree $RES_STATE_IN_FILES
-            - tree /var/lib/shippable/shippable_dev/build
-            - sha1sum $RES_STATE_IN_FILES/state_2_repo.tar 
-            - stat $RES_STATE_IN_FILES/state_2_repo.tar
-            - cat $JOB_PREVIOUS_STATE/res_state_2.env
-            - RES_STATE_OUT_FILES=$(shipctl get_resource_state res_state_2)
-            - echo "Writing to $RES_STATE_OUT_FILES"
-            - tar cvf $RES_STATE_OUT_FILES/state_2_repo.tar $SAMPLE_NODE_REPO_STATE
-            - shipctl post_resource_state res_state_2 "KEY1" "res_state_2_value1"$BUILD_NUMBER
-            - shipctl put_resource_state res_state_2 "KEY2" "res_state_2_value2"$BUILD_NUMBER
-            - sha1sum $RES_STATE_OUT_FILES/state_2_repo.tar 
-            - stat $RES_STATE_OUT_FILES/state_2_repo.tar
-            - ls -al $RES_STATE_OUT_FILES
-            - ls -al $RES_STATE_IN_FILES
-            - cat $TRANSFER/res_state_2.env
+#  - name: in_job
+#    type: runSh
+#    steps:
+#      - IN: sample_node_repo
+#      - IN: res_state_2
+#      - OUT: res_state_2    
+#      - TASK:
+#          script:
+#            - printenv
+#            - apt-get install tree
+#            - ls -al $IN_JOB_STATE
+#            - cat $JOB_PREVIOUS_STATE/in_job.env
+#            - cat $JOB_PREVIOUS_STATE/res_state_2.env
+#            - sha1sum $JOB_PREVIOUS_STATE/sample_node_repo.tar 
+#            - stat $JOB_PREVIOUS_STATE/sample_node_repo.tar
+#            - TRANSFER=$(shipctl get_resource_state in_job)
+#            - echo "Writing to $TRANSFER"
+#            - tar cvf $TRANSFER/sample_node_repo.tar $SAMPLE_NODE_REPO_STATE
+#            - shipctl post_resource_state in_job "KEY1" "in_job_value1"$BUILD_NUMBER
+#            - shipctl put_resource_state in_job "KEY2" "in_job_value2"$BUILD_NUMBER   
+#            - sha1sum $TRANSFER/sample_node_repo.tar 
+#            - stat $TRANSFER/sample_node_repo.tar
+#            - cat $TRANSFER/in_job.env
+#            - echo STATE IN-OUT TESTS
+#            - export RES_STATE_IN_FILES=$BUILD_DIR/IN/res_state_2/state
+#            - echo "Reading from $RES_STATE_IN_FILES"
+#            - tree $RES_STATE_IN_FILES
+#            - tree /var/lib/shippable/shippable_dev/build
+#            - sha1sum $RES_STATE_IN_FILES/state_2_repo.tar 
+#            - stat $RES_STATE_IN_FILES/state_2_repo.tar
+#            - cat $JOB_PREVIOUS_STATE/res_state_2.env
+#            - RES_STATE_OUT_FILES=$(shipctl get_resource_state res_state_2)
+#            - echo "Writing to $RES_STATE_OUT_FILES"
+#            - tar cvf $RES_STATE_OUT_FILES/state_2_repo.tar $SAMPLE_NODE_REPO_STATE
+#            - shipctl post_resource_state res_state_2 "KEY1" "res_state_2_value1"$BUILD_NUMBER
+#            - shipctl put_resource_state res_state_2 "KEY2" "res_state_2_value2"$BUILD_NUMBER
+#            - sha1sum $RES_STATE_OUT_FILES/state_2_repo.tar 
+#            - stat $RES_STATE_OUT_FILES/state_2_repo.tar
+#            - ls -al $RES_STATE_OUT_FILES
+#            - ls -al $RES_STATE_IN_FILES
+#            - cat $TRANSFER/res_state_2.env
 
   - name: standalone_runSh
     type: runSh
@@ -122,21 +122,21 @@ jobs:
           script:
             - printenv
 
-  - name: sample_node_runCI
-    type: runCI
-    steps: []
+#  - name: sample_node_runCI
+#    type: runCI
+#    steps: []
 
-  - name: read_tar_file
-    type: runSh
-    steps:
-      - IN: sample_node_runCI
-        switch: on
-      - IN: sample_node_ciRepo
-        switch: off
-      - TASK:
-          script:
-            - TRANSFER=$(shipctl get_resource_state sample_node_runCI)
-            - echo "Reading from $TRANSFER"
-            - sha1sum $TRANSFER/sample_node_repo.tar 
-            - stat $TRANSFER/sample_node_repo.tar
-            - cat $TRANSFER/sample_node_runCI.env
+#  - name: read_tar_file
+#    type: runSh
+#    steps:
+#      - IN: sample_node_runCI
+#        switch: on
+#      - IN: sample_node_ciRepo
+#        switch: off
+#      - TASK:
+#          script:
+#            - TRANSFER=$(shipctl get_resource_state sample_node_runCI)
+#            - echo "Reading from $TRANSFER"
+#            - sha1sum $TRANSFER/sample_node_repo.tar 
+#            - stat $TRANSFER/sample_node_repo.tar
+#            - cat $TRANSFER/sample_node_runCI.env
