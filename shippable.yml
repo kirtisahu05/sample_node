@@ -3,6 +3,9 @@ language: node_js
 node_js:
   - 4.8.7
 
+runtime:
+  nodePool: Ubuntu1404
+
 build:
   ci:
     - apt-get install tree
@@ -117,6 +120,8 @@ jobs:
 
   - name: standalone_runSh
     type: runSh
+    runtime:
+      nodePool: Ubuntu1404
     steps:
       - TASK:
           script:
