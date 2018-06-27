@@ -4,7 +4,7 @@ node_js:
   - 4.8.7
 
 runtime:
-  nodePool: Ubuntu1404
+  nodePool: ubuntu1604
 
 build:
   ci:
@@ -121,7 +121,7 @@ jobs:
   - name: standalone_runSh
     type: runSh
     runtime:
-      nodePool: Ubuntu1404
+      nodePool: ubuntu1604
     steps:
       - TASK:
           script:
