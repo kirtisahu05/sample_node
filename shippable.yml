@@ -27,7 +27,6 @@ build:
  #   - du -h $TRANSFER
 
 resources:
-resources:
   - name: nightly-trigger
     type: time
     seed:
