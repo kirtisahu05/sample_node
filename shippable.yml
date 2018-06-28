@@ -27,6 +27,12 @@ build:
  #   - du -h $TRANSFER
 
 resources:
+resources:
+  - name: nightly-trigger
+    type: time
+    seed:
+      interval: "0 22 * * *"
+      
   - name: res_state
     type: state  
 
