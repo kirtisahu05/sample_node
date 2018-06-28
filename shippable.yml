@@ -40,6 +40,13 @@ resources:
       sourceName: "ankul/app"
     seed:
       versionName: latest
+
+  - name: slack_notify
+    type: notification
+    integration: "slack-subint"
+    versionTemplate:
+      recipients:
+        - "@ankul" 
  
 #  - name: ECS-cluster
 #    type: cluster
@@ -120,12 +127,15 @@ jobs:
 
   - name: standalone_runSh
     type: runSh
-    runtime:
-      nodePool: ubuntu1604
     steps:
       - TASK:
           script:
             - printenv
+    on_success:
+      script:
+        - echo "new_syntax on_success"
+      NOTIFY:          
+        - name: slack_notify
 
 #  - name: sample_node_runCI
 #    type: runCI
