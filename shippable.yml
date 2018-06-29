@@ -12,7 +12,7 @@ build:
 integrations:
   notifications:
     - integrationName: "slack-subint"
-      type: slack
+      type: slackKey
       recipients:
         - "#test-5148"
       on_start: always
