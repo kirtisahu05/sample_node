@@ -15,9 +15,7 @@ integrations:
       type: slackKey
       recipients:
         - "#test-5148"
-      on_start: always
       on_success: always
-      on_failure: always
 
  #   - sha1sum $JOB_PREVIOUS_STATE/sample_node_repo.tar 
  #   - stat $JOB_PREVIOUS_STATE/sample_node_repo.tar
