@@ -12,7 +12,7 @@ build:
     - tree $JOB_PREVIOUS_STATE
 
 integrations:
-  notifications:
+  generic:
     - integrationName: slack-subint
       type: slack
       recipients:
