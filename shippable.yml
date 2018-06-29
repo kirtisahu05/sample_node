@@ -17,6 +17,7 @@ integrations:
       type: slack
       recipients:
         - "@ankul"
+      on_success: always
 
 
  #   - sha1sum $JOB_PREVIOUS_STATE/sample_node_repo.tar 
