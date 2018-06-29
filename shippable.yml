@@ -3,13 +3,11 @@ language: node_js
 node_js:
   - 4.8.7
 
-runtime:
-  nodePool: ubuntu1604
-
 build:
   ci:
-    - apt-get install tree
-    - tree $JOB_PREVIOUS_STATE
+    - echo true
+    #- apt-get install tree
+    #- tree $JOB_PREVIOUS_STATE
 
 integrations:
   notifications:
