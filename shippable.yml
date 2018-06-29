@@ -16,8 +16,8 @@ integrations:
     - integrationName: slack-subint
       type: notification
       versionTemplate:
-      recipients:
-        - "@ankul"
+        recipients:
+          - "@ankul"
 
 
  #   - sha1sum $JOB_PREVIOUS_STATE/sample_node_repo.tar 
