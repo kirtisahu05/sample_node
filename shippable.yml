@@ -30,8 +30,8 @@ resources:
 #  - name: res_state
 #    type: state  
 
-#  - name: res_state_2
-#    type: state  
+  - name: res_state_2
+    type: state  
  
   - name: nginx-image
     type: image
@@ -56,12 +56,12 @@ resources:
 #      sourceName: "ecs-cluster"
 #      region: "us-west-2"
 
-#  - name: sample_node_repo
-#    type: gitRepo
-#    integration: github-subint
-#    versionTemplate:
-#      sourceName: ankul-shippable/sample_node
-#      branch: master   
+  - name: sample_node_repo
+    type: gitRepo
+    integration: github-subint
+    versionTemplate:
+      sourceName: ankul-shippable/sample_node
+      branch: master   
 
 jobs:
   - name: manifest-job
@@ -84,26 +84,26 @@ jobs:
 #      - OUT: res_state
 #      - IN: in_job      
 
-#  - name: in_job
-#    type: runSh
-#    steps:
-#      - IN: sample_node_repo
-#      - IN: res_state_2
-#      - OUT: res_state_2    
-#      - TASK:
-#          script:
-#            - printenv
-#            - apt-get install tree
-#            - ls -al $IN_JOB_STATE
+  - name: in_job
+    type: runSh
+    steps:
+      - IN: sample_node_repo
+      - IN: res_state_2
+      - OUT: res_state_2    
+      - TASK:
+          script:
+            - printenv
+            - apt-get install tree
+            - ls -al $IN_JOB_STATE
 #            - cat $JOB_PREVIOUS_STATE/in_job.env
 #            - cat $JOB_PREVIOUS_STATE/res_state_2.env
 #            - sha1sum $JOB_PREVIOUS_STATE/sample_node_repo.tar 
 #            - stat $JOB_PREVIOUS_STATE/sample_node_repo.tar
-#            - TRANSFER=$(shipctl get_resource_state in_job)
-#            - echo "Writing to $TRANSFER"
-#            - tar cvf $TRANSFER/sample_node_repo.tar $SAMPLE_NODE_REPO_STATE
-#            - shipctl post_resource_state in_job "KEY1" "in_job_value1"$BUILD_NUMBER
-#            - shipctl put_resource_state in_job "KEY2" "in_job_value2"$BUILD_NUMBER   
+            - TRANSFER=$(shipctl get_resource_state in_job)
+            - echo "Writing to $TRANSFER"
+            - tar cvf $TRANSFER/sample_node_repo.tar $SAMPLE_NODE_REPO_STATE
+            - shipctl post_resource_state in_job "KEY1" "in_job_value1"$BUILD_NUMBER
+            - shipctl put_resource_state in_job "KEY2" "in_job_value2"$BUILD_NUMBER   
 #            - sha1sum $TRANSFER/sample_node_repo.tar 
 #            - stat $TRANSFER/sample_node_repo.tar
 #            - cat $TRANSFER/in_job.env
