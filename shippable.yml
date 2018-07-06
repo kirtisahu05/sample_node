@@ -13,11 +13,19 @@ build:
 resources:
   - name: nginx-image
     type: image
-    integration: "docker-subint-2"
+    integration: "docker-subint"
     pointer:
       sourceName: "ankul/app"
     seed:
       versionName: latest
+      
+  - name: nginx-image-2
+    type: image
+    integration: "docker-subint-2"
+    pointer:
+      sourceName: "ankul/app"
+    seed:
+      versionName: latest      
 
 jobs:
   - name: manifest-job
@@ -29,6 +37,8 @@ jobs:
     type: runSh
     integrations: easdssadas
     steps:
+      - IN: nginx-image
+      - IN: manifest-job
       - TASK:
           script:
             - printenv
@@ -39,6 +49,8 @@ jobs:
       random: key
       array: value
     steps:
+      - IN: nginx-image
+      - IN: manifest-job    
       - TASK:
           script:
             - printenv
@@ -49,6 +61,8 @@ jobs:
       - all_invalid_ints_invalid_int_1
       - all_invalid_ints_invalid_int_2
     steps:
+      - IN: nginx-image
+      - IN: manifest-job   
       - TASK:
           script:
             - printenv   
@@ -59,6 +73,8 @@ jobs:
       - github-subint
       - some_invalid_ints_invalid_int_1
     steps:
+      - IN: nginx-image
+      - IN: manifest-job    
       - TASK:
           script:
             - printenv  
@@ -69,6 +85,8 @@ jobs:
       - github-subint
       - docker-subint
     steps:
+      - IN: nginx-image
+      - IN: manifest-job    
       - TASK:
           script:
             - printenv  
@@ -76,6 +94,8 @@ jobs:
   - name: no_ints
     type: runSh
     steps:
+      - IN: nginx-image
+      - IN: manifest-job    
       - TASK:
           script:
             - printenv
