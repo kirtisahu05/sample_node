@@ -9,14 +9,6 @@ build:
     #- apt-get install tree
     #- tree $JOB_PREVIOUS_STATE
 
-integrations:
-  notifications:
-    - integrationName: "slack-subint"
-      type: slackKey
-      recipients:
-        - "@ankul"
-        - "#test-5148"
-      on_success: always
 
  #   - sha1sum $JOB_PREVIOUS_STATE/sample_node_repo.tar 
  #   - stat $JOB_PREVIOUS_STATE/sample_node_repo.tar
@@ -34,17 +26,12 @@ integrations:
  #   - stat $TRANSFER/sample_node_repo.tar
  #   - du -h $TRANSFER
 
-resources:
-  - name: nightly-trigger
-    type: time
-    seed:
-      interval: "0 22 * * *"
-      
-  - name: res_state
-    type: state  
+resources:      
+#  - name: res_state
+#    type: state  
 
-  - name: res_state_2
-    type: state  
+#  - name: res_state_2
+#    type: state  
  
   - name: nginx-image
     type: image
@@ -54,13 +41,13 @@ resources:
     seed:
       versionName: latest
 
-  - name: slack_notify
-    type: notification
-    integration: "slack-subint"
-    versionTemplate:
-      recipients:
-        - "@ankul"
-        - "#test-5148"
+#  - name: slack_notify
+#    type: notification
+#    integration: "slack-subint"
+#    versionTemplate:
+#      recipients:
+#        - "@ankul"
+#        - "#test-5148"
  
 #  - name: ECS-cluster
 #    type: cluster
@@ -141,15 +128,16 @@ jobs:
 
   - name: standalone_runSh
     type: runSh
+    integrations: easdssadas
     steps:
       - TASK:
           script:
             - printenv
-    on_success:
-      script:
-        - echo "new_syntax on_success"
-      NOTIFY:          
-        - name: slack_notify
+#    on_success:
+#      script:
+#        - echo "new_syntax on_success"
+#      NOTIFY:          
+#        - name: slack_notify
 
 #  - name: sample_node_runCI
 #    type: runCI
