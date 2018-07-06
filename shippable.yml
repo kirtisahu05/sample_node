@@ -46,8 +46,8 @@ jobs:
   - name: all_invalid_ints
     type: runSh
     integrations:
-      - invalid1
-      - invalid2
+      - all_invalid_ints_invalid_int_1
+      - all_invalid_ints_invalid_int_2
     steps:
       - TASK:
           script:
@@ -57,7 +57,7 @@ jobs:
     type: runSh
     integrations:
       - github-subint
-      - invalid2
+      - some_invalid_ints_invalid_int_1
     steps:
       - TASK:
           script:
@@ -73,3 +73,9 @@ jobs:
           script:
             - printenv  
             
+  - name: no_ints
+    type: runSh
+    steps:
+      - TASK:
+          script:
+            - printenv
