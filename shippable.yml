@@ -41,7 +41,7 @@ jobs:
 #      - IN: manifest-job
 #      - TASK:
 #          script:
-            - printenv
+#            - printenv
             
 #  - name: object_ints
 #    type: runSh
