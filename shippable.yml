@@ -95,18 +95,18 @@ jobs:
             - printenv
             - apt-get install tree
             - ls -al $IN_JOB_STATE
-#            - cat $JOB_PREVIOUS_STATE/in_job.env
-#            - cat $JOB_PREVIOUS_STATE/res_state_2.env
-#            - sha1sum $JOB_PREVIOUS_STATE/sample_node_repo.tar 
-#            - stat $JOB_PREVIOUS_STATE/sample_node_repo.tar
+            - cat $JOB_PREVIOUS_STATE/in_job.env
+            - cat $JOB_PREVIOUS_STATE/res_state_2.env
+            - sha1sum $JOB_PREVIOUS_STATE/sample_node_repo.tar 
+            - stat $JOB_PREVIOUS_STATE/sample_node_repo.tar
             - TRANSFER=$(shipctl get_resource_state in_job)
             - echo "Writing to $TRANSFER"
             - tar cvf $TRANSFER/sample_node_repo.tar $SAMPLE_NODE_REPO_STATE
             - shipctl post_resource_state in_job "KEY1" "in_job_value1"$BUILD_NUMBER
             - shipctl put_resource_state in_job "KEY2" "in_job_value2"$BUILD_NUMBER   
-#            - sha1sum $TRANSFER/sample_node_repo.tar 
-#            - stat $TRANSFER/sample_node_repo.tar
-#            - cat $TRANSFER/in_job.env
+            - sha1sum $TRANSFER/sample_node_repo.tar 
+            - stat $TRANSFER/sample_node_repo.tar
+            - cat $TRANSFER/in_job.env
 #            - echo STATE IN-OUT TESTS
 #            - export RES_STATE_IN_FILES=$BUILD_DIR/IN/res_state_2/state
 #            - echo "Reading from $RES_STATE_IN_FILES"
