@@ -33,27 +33,27 @@ jobs:
     steps:
       - IN: nginx-image
 
-  - name: string_ints
-    type: runSh
-    integrations: easdssadas
-    steps:
-      - IN: nginx-image
-      - IN: manifest-job
-      - TASK:
-          script:
+#  - name: string_ints
+#    type: runSh
+#    integrations: easdssadas
+#    steps:
+#      - IN: nginx-image
+#      - IN: manifest-job
+#      - TASK:
+#          script:
             - printenv
             
-  - name: object_ints
-    type: runSh
-    integrations:
-      random: key
-      array: value
-    steps:
-      - IN: nginx-image
-      - IN: manifest-job    
-      - TASK:
-          script:
-            - printenv
+#  - name: object_ints
+#    type: runSh
+#    integrations:
+#      random: key
+#      array: value
+#    steps:
+#      - IN: nginx-image
+#      - IN: manifest-job    
+#      - TASK:
+#          script:
+#            - printenv
             
   - name: all_invalid_ints
     type: runSh
