@@ -8,9 +8,9 @@ node_js:
 
 env:    
   matrix:
-    - ENV1: "foo1" <environment variables in dictionary format>
+    - ENV1: "foo1"
       ENV2: "moo1"
-    - ENV1: "foo2" <environment variables in dictionary format>
+    - ENV1: "foo2"
       ENV2: "moo2"  
 
 build:
