@@ -96,7 +96,17 @@ jobs:
       - TASK:
           script:
             - printenv  
-            
+ 
+  - name: runSh_with_image
+    type: runSh
+    runtime:
+      nodePool: default_cluster    
+    steps:
+      - IN: nginx-image  
+      - TASK:
+          script:
+            - printenv  
+ 
   - name: no_ints
     type: runSh
     runtime:
