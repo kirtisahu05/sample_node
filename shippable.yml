@@ -57,6 +57,8 @@ jobs:
             
   - name: all_invalid_ints
     type: runSh
+    runtime:
+      nodePool: default_cluster
     integrations:
       - all_invalid_ints_invalid_int_1
       - all_invalid_ints_invalid_int_2
@@ -69,6 +71,8 @@ jobs:
             
   - name: some_invalid_ints
     type: runSh
+    runtime:
+      nodePool: default_cluster    
     integrations:
       - github-subint
       - some_invalid_ints_invalid_int_1
@@ -81,6 +85,8 @@ jobs:
 
   - name: all_valid_ints
     type: runSh
+    runtime:
+      nodePool: default_cluster    
     integrations:
       - github-subint
       - docker-subint
@@ -93,6 +99,8 @@ jobs:
             
   - name: no_ints
     type: runSh
+    runtime:
+      nodePool: default_cluster    
     steps:
       - IN: nginx-image
       - IN: manifest-job    
