@@ -12,6 +12,10 @@ env:
       ENV2: "moo1"
     - ENV1: "foo2"
       ENV2: "moo2"  
+    - ENV1: "foo3"
+      ENV2: "moo3"
+    - ENV1: "foo4"
+      ENV2: "moo4"        
 
 build:
   ci:
