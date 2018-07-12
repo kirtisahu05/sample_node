@@ -3,8 +3,15 @@ language: node_js
 node_js:
   - 4.8.7
   
-runtime:
-  nodePool: default_cluster
+#runtime:
+#  nodePool: default_cluster
+
+env:    
+  matrix:
+    - ENV1: "foo1" <environment variables in dictionary format>
+      ENV2: "moo1"
+    - ENV1: "foo2" <environment variables in dictionary format>
+      ENV2: "moo2"  
 
 build:
   ci:
