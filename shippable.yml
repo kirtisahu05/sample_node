@@ -79,7 +79,7 @@ jobs:
       - TASK:
           script:
             - printenv
-            - sdasd
+            - sdasd$dsaasda
 
   - name: some_invalid_ints
     type: runSh
