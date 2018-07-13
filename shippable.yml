@@ -2,20 +2,20 @@ language: node_js
 
 node_js:
   - 4.8.7
-  
+
 #runtime:
 #  nodePool: default_cluster
 
-env:    
+env:
   matrix:
     - ENV1: "foo1"
       ENV2: "moo1"
     - ENV1: "foo2"
-      ENV2: "moo2"  
+      ENV2: "moo2"
     - ENV1: "foo3"
       ENV2: "moo3"
     - ENV1: "foo4"
-      ENV2: "moo4"        
+      ENV2: "moo4"
 
 build:
   ci:
@@ -29,14 +29,14 @@ resources:
       sourceName: "ankul/app"
     seed:
       versionName: latest
-      
+
   - name: nginx-image-2
     type: image
     integration: "docker-subint"
     pointer:
       sourceName: "ankul/app"
     seed:
-      versionName: latest      
+      versionName: latest
 
 jobs:
   - name: manifest-job
@@ -53,7 +53,7 @@ jobs:
 #      - TASK:
 #          script:
 #            - printenv
-            
+
 #  - name: object_ints
 #    type: runSh
 #    integrations:
@@ -61,11 +61,11 @@ jobs:
 #      array: value
 #    steps:
 #      - IN: nginx-image
-#      - IN: manifest-job    
+#      - IN: manifest-job
 #      - TASK:
 #          script:
 #            - printenv
-            
+
   - name: all_invalid_ints
     type: runSh
     runtime:
@@ -75,56 +75,57 @@ jobs:
       - all_invalid_ints_invalid_int_2
     steps:
       - IN: nginx-image
-      - IN: manifest-job   
+      - IN: manifest-job
       - TASK:
           script:
-            - printenv   
-            
+            - printenv
+            - sdasd
+
   - name: some_invalid_ints
     type: runSh
     runtime:
-      nodePool: default_cluster    
+      nodePool: default_cluster
     integrations:
       - github-subint
       - some_invalid_ints_invalid_int_1
     steps:
       - IN: nginx-image
-      - IN: manifest-job    
+      - IN: manifest-job
       - TASK:
           script:
-            - printenv  
+            - printenv
 
   - name: all_valid_ints
     type: runSh
     runtime:
-      nodePool: default_cluster    
+      nodePool: default_cluster
     integrations:
       - github-subint
       - docker-subint
     steps:
       - IN: nginx-image
-      - IN: manifest-job    
+      - IN: manifest-job
       - TASK:
           script:
-            - printenv  
- 
+            - printenv
+
   - name: runSh_with_image
     type: runSh
     runtime:
-      nodePool: default_cluster    
+      nodePool: default_cluster
     steps:
-      - IN: nginx-image  
+      - IN: nginx-image
       - TASK:
           script:
-            - printenv  
- 
+            - printenv
+
   - name: no_ints
     type: runSh
     runtime:
-      nodePool: default_cluster    
+      nodePool: default_cluster
     steps:
       - IN: nginx-image
-      - IN: manifest-job    
+      - IN: manifest-job
       - TASK:
           script:
             - printenv
