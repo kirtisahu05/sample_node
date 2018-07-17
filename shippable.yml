@@ -6,16 +6,6 @@ node_js:
 #runtime:
 #  nodePool: default_cluster
 
-env:
-  matrix:
-    - ENV1: "foo1"
-      ENV2: "moo1"
-    - ENV1: "foo2"
-      ENV2: "moo2"
-    - ENV1: "foo3"
-      ENV2: "moo3"
-    - ENV1: "foo4"
-      ENV2: "moo4"
 
 build:
   ci:
@@ -30,13 +20,21 @@ resources:
     seed:
       versionName: latest
 
-  - name: nginx-image-2
-    type: image
+  - name: docker-int-res
+    type: integration
     integration: "docker-subint"
-    pointer:
-      sourceName: "ankul/app"
-    seed:
-      versionName: latest
+
+  - name: key-value-int-res
+    type: integration
+    integration: "key-value-subint"  
+
+  - name: ssh-int-res
+    type: integration
+    integration: "ssh-subint"
+
+  - name: nodes-int-res
+    type: integration
+    integration: "nodes-subint"      
 
 jobs:
   - name: manifest-job
@@ -44,79 +42,39 @@ jobs:
     steps:
       - IN: nginx-image
 
-#  - name: string_ints
-#    type: runSh
-#    integrations: easdssadas
-#    steps:
-#      - IN: nginx-image
-#      - IN: manifest-job
-#      - TASK:
-#          script:
-#            - printenv
-
-#  - name: object_ints
-#    type: runSh
-#    integrations:
-#      random: key
-#      array: value
-#    steps:
-#      - IN: nginx-image
-#      - IN: manifest-job
-#      - TASK:
-#          script:
-#            - printenv
-
-  - name: all_invalid_ints
+  - name: indirect_integrations
     type: runSh
     runtime:
       nodePool: shared_one
-    integrations:
-      - all_invalid_ints_invalid_int_1
-      - all_invalid_ints_invalid_int_2
     steps:
       - IN: nginx-image
       - IN: manifest-job
+      - IN: docker-int-res
+      - IN: key-value-int-res
+      - IN: ssh-int-res
+      - IN: nodes-int-res
       - TASK:
           script:
+            - apt-get install tree
+            - tree $JOB_PATH
             - printenv
-            - random_1_8
 
-  - name: some_invalid_ints
+  - name: direct_integrations
     type: runSh
     runtime:
       nodePool: shared_one
     integrations:
-      - github-subint
-      - some_invalid_ints_invalid_int_1
-    steps:
-      - IN: nginx-image
-      - IN: manifest-job
-      - TASK:
-          script:
-            - printenv
-
-  - name: all_valid_ints
-    type: runSh
-    runtime:
-      nodePool: shared_one
-    integrations:
-      - github-subint
       - docker-subint
+      - key-value-subint
+      - ssh-subint
+      - nodes-subint
     steps:
       - IN: nginx-image
       - IN: manifest-job
       - TASK:
           script:
-            - printenv
-
-  - name: runSh_with_image
-    type: runSh
-    runtime:
-      nodePool: shared_one
-    steps:
-      - IN: nginx-image
-      - TASK:
-          script:
+            - apt-get install tree
+            - tree $JOB_PATH          
             - printenv
 
   - name: no_ints
