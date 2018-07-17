@@ -76,6 +76,7 @@ jobs:
             - apt-get install tree
             - tree $JOB_PATH          
             - printenv
+            - GIT_SSH_COMMAND='ssh -i $SSHSUBINT_PRIVATE_KEY_PATH' git clone git@github.com:ankul-shippable/sample_node.git && ls
 
   - name: no_ints
     type: runSh
