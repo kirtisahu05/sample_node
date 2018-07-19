@@ -92,6 +92,7 @@ jobs:
       - ssh-subint
       - nodes-subint
     steps:
+      - IN: docker-int-res
       - IN: nginx-image
       - IN: manifest-job
       - TASK:
