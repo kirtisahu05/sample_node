@@ -34,9 +34,29 @@ resources:
 
   - name: nodes-int-res
     type: integration
-    integration: "nodes-subint"      
+    integration: "nodes-subint"  
+  - name: trigger_nightly
+    type: time
+    versionTemplate:
+      interval: "0 13 * * *"
 
 jobs:
+  - name: sample_node_runCI
+    type: runCI
+    steps:
+      - IN: trigger_nightly
+
+  - name: runSh
+    type: runSh
+    runtime:
+      nodePool: default_cluster
+    steps:
+      - IN: nginx-image
+      - IN: trigger_nightly
+      - TASK:
+          script:
+            - printenv
+
   - name: manifest-job
     type: manifest
     steps:
