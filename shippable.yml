@@ -38,7 +38,7 @@ resources:
   - name: trigger_nightly
     type: time
     versionTemplate:
-      interval: "0 13 * * *"
+      interval: "*/3 * * * *"
 
 jobs:
   - name: sample_node_runCI
