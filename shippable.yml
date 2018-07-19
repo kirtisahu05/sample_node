@@ -29,7 +29,7 @@ jobs:
   - name: runSh
     type: runSh
     runtime:
-      nodePool: default_cluster
+      nodePool: dynamic_nodes
     steps:
       - IN: nginx-image
       - TASK:
