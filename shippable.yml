@@ -79,8 +79,15 @@ jobs:
             - tree $JOB_PATH
             - printenv
             - GIT_SSH_COMMAND='ssh -i $SSHINTRES_PRIVATE_KEY_PATH' git clone git@github.com:ankul-shippable/sample_node.git && ls
+            - echo ================ docker-int-res ==================
             - shipctl get_integration_resource_keys "docker-int-res"
             - shipctl get_integration_resource_field "docker-int-res" "url"
+            - echo ================ ssh-int-res ==================
+            - shipctl get_integration_resource_keys ssh-int-res
+            - echo ================ nodes-int-res ==================
+            - shipctl get_integration_resource_keys nodes-int-res
+            - echo ================ key-value-int-res ==================
+            - shipctl get_integration_resource_keys key-value-int-res
 
   - name: direct_integrations
     type: runSh
@@ -101,8 +108,15 @@ jobs:
             - tree $JOB_PATH          
             - printenv
             - GIT_SSH_COMMAND='ssh -i $SSHSUBINT_PRIVATE_KEY_PATH' git clone git@github.com:ankul-shippable/sample_node.git && ls
-            - echo =========================
+            - echo ================ docker-subint ==================
             - shipctl get_integration_keys docker-subint
+            - shipctl get_integration_field docker-subint url
+            - echo ================ ssh-subint ==================
+            - shipctl get_integration_keys ssh-subint
+            - echo ================ nodes-subint ==================
+            - shipctl get_integration_keys nodes-subint
+            - echo ================ key-value-subint ==================
+            - shipctl get_integration_keys key-value-subint
 
   - name: no_ints
     type: runSh
