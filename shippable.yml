@@ -84,10 +84,14 @@ jobs:
             - shipctl get_integration_resource_field "docker-int-res" "url"
             - echo ================ ssh-int-res ==================
             - shipctl get_integration_resource_keys ssh-int-res
+            - shipctl get_integration_resource_field ssh-int-res publicKey
+            - shipctl get_integration_resource_field ssh-int-res privateKey
             - echo ================ nodes-int-res ==================
             - shipctl get_integration_resource_keys nodes-int-res
+            - shipctl get_integration_resource_field nodes-int-res nodes
             - echo ================ key-value-int-res ==================
             - shipctl get_integration_resource_keys key-value-int-res
+            - shipctl get_integration_resource_field key-value-int-res SOME_RANDOM_ENV_2
 
   - name: direct_integrations
     type: runSh
@@ -113,10 +117,14 @@ jobs:
             - shipctl get_integration_field docker-subint url
             - echo ================ ssh-subint ==================
             - shipctl get_integration_keys ssh-subint
+            - shipctl get_integration_field ssh-subint publicKey
+            - shipctl get_integration_field ssh-subint privateKey
             - echo ================ nodes-subint ==================
             - shipctl get_integration_keys nodes-subint
+            - shipctl get_integration_field nodes-subint nodes
             - echo ================ key-value-subint ==================
             - shipctl get_integration_keys key-value-subint
+            - shipctl get_integration_field key-value-subint SOME_RANDOM_ENV_2
 
   - name: no_ints
     type: runSh
