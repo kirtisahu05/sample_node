@@ -169,14 +169,15 @@ jobs:
       - IN: nginx-image
       - IN: manifest-job
       - TASK:
-          script:       
-            #- SET
+          script:   
+            - echo %JOB_INTEGRATIONS\%
+            #- set
             #- GIT_SSH_COMMAND='ssh -i $SSHSUBINT_PRIVATE_KEY_PATH' git clone git@github.com:ankul-shippable/sample_node.git && ls
             - echo ================ docker-int-res ==================
             - shipctl get_integration_resource_keys "docker-int-res"
             - shipctl get_integration_resource_field "docker-int-res" "url"
             - echo ================ docker-subint ==================
-            - shipctl get_integration_keys "docker-subint"
+            #- shipctl get_integration_keys "docker-subint"
             - shipctl get_integration_field "docker-subint" "url"
             - echo ================ ssh-subint ==================
             - shipctl get_integration_keys ssh-subint
