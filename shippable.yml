@@ -169,7 +169,9 @@ jobs:
       - IN: nginx-image
       - IN: manifest-job
       - TASK:
-          script:   
+          script:  
+            - echo $Env:JOB_INTEGRATIONS
+            - echo $env:JOB_INTEGRATIONS
             - echo %JOB_INTEGRATIONS%
             #- set
             #- GIT_SSH_COMMAND='ssh -i $SSHSUBINT_PRIVATE_KEY_PATH' git clone git@github.com:ankul-shippable/sample_node.git && ls
