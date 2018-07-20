@@ -170,7 +170,7 @@ jobs:
       - IN: manifest-job
       - TASK:
           script:   
-            - echo %JOB_INTEGRATIONS\%
+            - echo %JOB_INTEGRATIONS%
             #- set
             #- GIT_SSH_COMMAND='ssh -i $SSHSUBINT_PRIVATE_KEY_PATH' git clone git@github.com:ankul-shippable/sample_node.git && ls
             - echo ================ docker-int-res ==================
