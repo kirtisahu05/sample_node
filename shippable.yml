@@ -109,7 +109,8 @@ jobs:
       - TASK:
           script:        
             - apt-get install tree
-            - tree $JOB_PATH   
+            - tree $JOB_PATH
+            - printenv
             - GIT_SSH_COMMAND='ssh -i $SSHSUBINT_PRIVATE_KEY_PATH' git clone git@github.com:ankul-shippable/sample_node.git && ls
             - echo ================ docker-subint ==================
             - shipctl get_integration_keys docker-subint
@@ -169,7 +170,7 @@ jobs:
       - IN: manifest-job
       - TASK:
           script:       
-            - printenv
+            - SET
             #- GIT_SSH_COMMAND='ssh -i $SSHSUBINT_PRIVATE_KEY_PATH' git clone git@github.com:ankul-shippable/sample_node.git && ls
             - echo ================ docker-subint ==================
             - shipctl get_integration_keys docker-subint
