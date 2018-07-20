@@ -139,7 +139,7 @@ jobs:
       - IN: nodes-int-res
       - TASK:
           script:
-            - SET
+            #- SET
             #- GIT_SSH_COMMAND='ssh -i $SSHINTRES_PRIVATE_KEY_PATH' git clone git@github.com:ankul-shippable/sample_node.git && ls
             - echo ================ docker-int-res ==================
             - shipctl get_integration_resource_keys "docker-int-res"
@@ -170,7 +170,7 @@ jobs:
       - IN: manifest-job
       - TASK:
           script:       
-            - SET
+            #- SET
             #- GIT_SSH_COMMAND='ssh -i $SSHSUBINT_PRIVATE_KEY_PATH' git clone git@github.com:ankul-shippable/sample_node.git && ls
             - echo ================ docker-subint ==================
             - shipctl get_integration_keys docker-subint
