@@ -178,7 +178,7 @@ jobs:
             - shipctl get_integration_resource_keys "docker-int-res"
             - shipctl get_integration_resource_field "docker-int-res" "url"
             - echo ================ docker-subint ==================
-            #- shipctl get_integration_keys "docker-subint"
+            - shipctl get_integration_keys "docker-subint"
             - shipctl get_integration_field "docker-subint" "url"
             - echo ================ ssh-subint ==================
             - shipctl get_integration_keys ssh-subint
