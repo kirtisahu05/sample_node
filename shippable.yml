@@ -86,7 +86,6 @@ jobs:
     type: runSh
     runtime:
       nodePool: custom_one
-      container: false
     integrations:
       - docker-subint
       - key-value-subint
