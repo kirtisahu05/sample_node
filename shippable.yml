@@ -124,7 +124,7 @@ jobs:
             - shipctl get_integration_keys key-value-subint
             - shipctl get_integration_field key-value-subint SOME_RANDOM_ENV_2
 
-  - name: window_indirect_integrations
+  - name: windows_indirect_integrations
     type: runSh
     runtime:
       nodePool: custom_one
@@ -153,7 +153,7 @@ jobs:
             - shipctl get_integration_resource_keys key-value-int-res
             - shipctl get_integration_resource_field key-value-int-res SOME_RANDOM_ENV_2
 
-  - name: direct_integrations
+  - name: windows_direct_integrations
     type: runSh
     runtime:
       nodePool: custom_one
