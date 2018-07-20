@@ -49,7 +49,7 @@ jobs:
   - name: runSh
     type: runSh
     runtime:
-      nodePool: default_cluster
+      nodePool: custom_one
     steps:
       - IN: nginx-image
       - IN: trigger_nightly
@@ -65,7 +65,7 @@ jobs:
   - name: indirect_integrations
     type: runSh
     runtime:
-      nodePool: shared_one
+      nodePool: custom_one
     steps:
       - IN: nginx-image
       - IN: manifest-job
@@ -85,7 +85,7 @@ jobs:
   - name: direct_integrations
     type: runSh
     runtime:
-      nodePool: shared_one
+      nodePool: custom_one
     integrations:
       - docker-subint
       - key-value-subint
@@ -107,7 +107,7 @@ jobs:
   - name: no_ints
     type: runSh
     runtime:
-      nodePool: shared_one
+      nodePool: custom_one
     steps:
       - IN: nginx-image
       - IN: manifest-job
