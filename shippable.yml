@@ -11,6 +11,13 @@ build:
   ci:
     - echo true
 
+integrations:
+  generic: 
+    - integrationName: docker-shared-subint
+    - integrationName: slack-shared-subint    
+      recipients:
+        - "#test-5148"
+
 resources:
   - name: nginx-image-shared
     type: image
