@@ -34,26 +34,26 @@ resources:
       versionName: latest
 
   - name: repo_resource
-    type: image
+    type: gitRepo
     integration: "github-subint"
     versionTemplate:
       sourceName: "ankul-shippable/sample_java"
       branch: "master"
 
   - name: docker-shared-res
-    type: image
+    type: integration
     integration: "docker-shared-subint" 
     
   - name: ssh-shared-res
-    type: image
+    type: integration
     integration: "ssh-shared-subint"    
     
   - name: docker-res
-    type: image
+    type: integration
     integration: "docker-subint" 
     
   - name: ssh-res
-    type: image
+    type: integration
     integration: "ssh-subint"        
 
 jobs:
