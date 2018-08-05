@@ -12,86 +12,73 @@ build:
     - echo true
 
 resources:
+  - name: nginx-image-shared
+    type: image
+    integration: "docker-shared-subint"
+    versionTemplate:
+      sourceName: "ankul/app"
+      versionName: latest
+
+  - name: repo-resource-shared
+    type: gitRepo
+    integration: "github--shared-subint"
+    versionTemplate:
+      sourceName: "ankul-shippable/sample_java"
+      branch: "master"
+
   - name: nginx-image
     type: image
     integration: "docker-subint"
-    pointer:
+    versionTemplate:
       sourceName: "ankul/app"
-    seed:
       versionName: latest
 
-  - name: docker-int-res
-    type: integration
-    integration: "docker-subint"
-
-  - name: key-value-int-res
-    type: integration
-    integration: "key-value-subint"  
-
-  - name: ssh-int-res
-    type: integration
-    integration: "ssh-subint"
-
-  - name: nodes-int-res
-    type: integration
-    integration: "nodes-subint"  
-  - name: trigger_nightly
-    type: time
+  - name: repo_resource
+    type: image
+    integration: "github--subint"
     versionTemplate:
-      interval: "* 22 * * *"
+      sourceName: "ankul-shippable/sample_java"
+      branch: "master"
+
+  - name: docker-shared-res
+    type: image
+    integration: "docker-shared-subint" 
+    
+  - name: ssh-shared-res
+    type: image
+    integration: "ssh-shared-subint"    
+    
+  - name: docker-res
+    type: image
+    integration: "docker-shared-subint" 
+    
+  - name: ssh-res
+    type: image
+    integration: "ssh-shared-subint"        
 
 jobs:
-  - name: sample_node_runCI
-    type: runCI
-    steps:
-      - IN: trigger_nightly
-
-  - name: runSh
-    type: runSh
-    runtime:
-      nodePool: custom_one
-    steps:
-      - IN: nginx-image
-      - IN: trigger_nightly
-      - TASK:
-          script:
-            - printenv
-
-  - name: manifest-job
+  - name: manifest-job-shared
     type: manifest
     steps:
-      - IN: nginx-image
+      - IN: nginx-image-shared
 
-  - name: indirect_integrations
+  - name: runSh-shared-indirect
     type: runSh
     runtime:
       nodePool: custom_one
     steps:
-      - IN: nginx-image
-      - IN: manifest-job
-      - IN: docker-int-res
-      - IN: key-value-int-res
-      - IN: ssh-int-res
-      - IN: nodes-int-res
+      - IN: manifest-job-shared
+      - IN: docker-shared-res
+      - IN: ssh-shared-res
       - TASK:
           script:
-            - apt-get install tree
-            - tree $JOB_PATH
-            - printenv
-            - GIT_SSH_COMMAND='ssh -i $SSHINTRES_PRIVATE_KEY_PATH' git clone git@github.com:ankul-shippable/sample_node.git && ls
             - echo ================ docker-int-res ==================
-            - shipctl get_integration_resource_keys "docker-int-res"
-            - shipctl get_integration_resource_field "docker-int-res" "url"
+            - shipctl get_integration_resource_keys "docker-shared-res"
+            - shipctl get_integration_resource_field "docker-shared-res" "url"
             - echo ================ ssh-int-res ==================
-            - shipctl get_integration_resource_keys ssh-int-res
-            - shipctl get_integration_resource_field ssh-int-res publicKey
-            - shipctl get_integration_resource_field ssh-int-res privateKey
-            - echo ================ nodes-int-res ==================
-            - shipctl get_integration_resource_keys nodes-int-res
-            - shipctl get_integration_resource_field nodes-int-res nodes
-            - echo ================ key-value-int-res ==================
-            - shipctl get_integration_resource_keys key-value-int-res
-            - shipctl get_integration_resource_field key-value-int-res SOME_RANDOM_ENV_2
+            - shipctl get_integration_resource_keys ssh-shared-res
+            - shipctl get_integration_resource_field ssh-shared-res publicKey
+            - shipctl get_integration_resource_field ssh-shared-res privateKey
 
   - name: direct_integrations
     type: runSh
@@ -154,50 +141,3 @@ jobs:
             - echo ================ key-value-int-res ==================
             - shipctl get_integration_resource_keys key-value-int-res
             - shipctl get_integration_resource_field key-value-int-res SOME_RANDOM_ENV_2
-
-  - name: windows_direct_integrations
-    type: runSh
-    runtime:
-      nodePool: custom_windows
-    integrations:
-      - docker-subint
-      - key-value-subint
-      - ssh-subint
-      - nodes-subint
-    steps:
-      - IN: docker-int-res
-      - IN: nginx-image
-      - IN: manifest-job
-      - TASK:
-          script:  
-            - $Env:JOB_STATE
-            - $Env:JOB_INTEGRATIONS
-            - gci env:*
-            #- GIT_SSH_COMMAND='ssh -i $SSHSUBINT_PRIVATE_KEY_PATH' git clone git@github.com:ankul-shippable/sample_node.git && ls
-            - echo ================ docker-int-res ==================
-            - shipctl get_integration_resource_keys "docker-int-res"
-            - shipctl get_integration_resource_field "docker-int-res" "url"
-            - echo ================ docker-subint ==================
-            - shipctl get_integration_keys "docker-subint"
-            - shipctl get_integration_field "docker-subint" "url"
-            - echo ================ ssh-subint ==================
-            - shipctl get_integration_keys ssh-subint
-            - shipctl get_integration_field ssh-subint publicKey
-            - shipctl get_integration_field ssh-subint privateKey
-            - echo ================ nodes-subint ==================
-            - shipctl get_integration_keys nodes-subint
-            - shipctl get_integration_field nodes-subint nodes
-            - echo ================ key-value-subint ==================
-            - shipctl get_integration_keys key-value-subint
-            - shipctl get_integration_field key-value-subint SOME_RANDOM_ENV_2
-
-  - name: no_ints
-    type: runSh
-    runtime:
-      nodePool: custom_one
-    steps:
-      - IN: nginx-image
-      - IN: manifest-job
-      - TASK:
-          script:
-            - printenv
