@@ -35,7 +35,7 @@ resources:
 
   - name: repo_resource
     type: image
-    integration: "github--subint"
+    integration: "github-subint"
     versionTemplate:
       sourceName: "ankul-shippable/sample_java"
       branch: "master"
@@ -50,11 +50,11 @@ resources:
     
   - name: docker-res
     type: image
-    integration: "docker-shared-subint" 
+    integration: "docker-subint" 
     
   - name: ssh-res
     type: image
-    integration: "ssh-shared-subint"        
+    integration: "ssh-subint"        
 
 jobs:
   - name: manifest-job-shared
