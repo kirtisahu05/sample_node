@@ -12,11 +12,11 @@ build:
     - echo true
 
 integrations:
-  generic: 
-    - integrationName: docker-shared-subint
-    - integrationName: slack-shared-subint    
+  notifications: 
+    - integrationName: slack-shared-subint
       recipients:
         - "#test-5148"
+      on_success: always        
 
 resources:
   - name: nginx-image-shared
