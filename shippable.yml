@@ -3,8 +3,8 @@ language: node_js
 node_js:
   - 4.8.7
 
-#runtime:
-#  nodePool: default_cluster
+runtime:
+  nodePool: default_cluster
 
 
 build:
@@ -65,7 +65,7 @@ jobs:
   - name: runSh-shared-indirect
     type: runSh
     runtime:
-      nodePool: custom_one
+      nodePool: default_cluster
     steps:
       - IN: manifest-job-shared
       - IN: docker-shared-res
@@ -83,7 +83,7 @@ jobs:
   - name: runSh-shared-direct
     type: runSh
     runtime:
-      nodePool: custom_one
+      nodePool: default_cluster
     integrations:
       - docker-shared-subint
       - ssh-shared-subint
@@ -103,7 +103,7 @@ jobs:
   - name: runSh-direct
     type: runSh
     runtime:
-      nodePool: custom_one
+      nodePool: default_cluster
     integrations:
       - docker-subint
       - ssh-subint
