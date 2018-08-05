@@ -19,7 +19,7 @@ integrations:
         - "#test-5148"
       on_start: always
   hub:
-    - integrationName: docker-shared-subint
+    - integrationName: docker-subint
       type: dockerRegistryLogin
 
 resources:
