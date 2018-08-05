@@ -21,7 +21,7 @@ resources:
 
   - name: repo-resource-shared
     type: gitRepo
-    integration: "github--shared-subint"
+    integration: "github-shared-subint"
     versionTemplate:
       sourceName: "ankul-shippable/sample_java"
       branch: "master"
