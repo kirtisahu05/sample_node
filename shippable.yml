@@ -17,7 +17,10 @@ integrations:
       type: slackKey
       recipients:
         - "#test-5148"
-      on_success: always        
+      on_start: always
+  hub:
+    - integrationName: docker-shared-subint
+      type: dockerRegistryLogin
 
 resources:
   - name: nginx-image-shared
