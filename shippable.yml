@@ -65,13 +65,21 @@ resources:
     type: integration
     integration: "ssh-shared-subint"    
     
+  - name: kv-shared-res
+    type: integration
+    integration: "kv-shared-subint" 
+
   - name: docker-res
     type: integration
     integration: "docker-subint" 
     
   - name: ssh-res
     type: integration
-    integration: "ssh-subint"        
+    integration: "ssh-subint"
+  
+  - name: kv-res
+    type: integration
+    integration: "kv-subint"  
 
 jobs:
   - name: manifest-job-shared
@@ -87,6 +95,7 @@ jobs:
       - IN: manifest-job-shared
       - IN: docker-shared-res
       - IN: ssh-shared-res
+      - IN: kv-shared-res
       - TASK:
           script:
             - echo ================ docker-shared-res ==================
@@ -96,6 +105,11 @@ jobs:
             - shipctl get_integration_resource_keys ssh-shared-res
             - shipctl get_integration_resource_field ssh-shared-res publicKey
             - shipctl get_integration_resource_field ssh-shared-res privateKey
+            - echo ================ kv-shared-res ==================
+            - shipctl get_integration_resource_keys kv-shared-res
+            - shipctl get_integration_resource_field kv-shared-res KEY_VALUE_ENV_1
+            - shipctl get_integration_resource_field kv-shared-res KEY_VALUE_ENV_2            
+            
 
   - name: runSh-shared-direct
     type: runSh
@@ -104,6 +118,7 @@ jobs:
     integrations:
       - docker-shared-subint
       - ssh-shared-subint
+      - kv-shared-res
     steps:
       - IN: manifest-job-shared
       - TASK:
@@ -115,6 +130,10 @@ jobs:
             - shipctl get_integration_keys ssh-shared-subint
             - shipctl get_integration_field ssh-shared-subint publicKey
             - shipctl get_integration_field ssh-shared-subint privateKey
+            - echo ================ kv-shared-subint ==================
+            - shipctl get_integration_keys kv-shared-subint
+            - shipctl get_integration_field kv-shared-subint KEY_VALUE_ENV_1
+            - shipctl get_integration_field kv-shared-subint KEY_VALUE_ENV_2            
 
 
   - name: runSh-direct
@@ -124,6 +143,7 @@ jobs:
     integrations:
       - docker-subint
       - ssh-subint
+      - kv-subint
     steps:
       - IN: manifest-job-shared
       - TASK:
@@ -135,3 +155,7 @@ jobs:
             - shipctl get_integration_keys ssh-subint
             - shipctl get_integration_field ssh-subint publicKey
             - shipctl get_integration_field ssh-subint privateKey
+            - echo ================ kv-subint ==================
+            - shipctl get_integration_keys kv-subint
+            - shipctl get_integration_field kv-subint KEY_VALUE_ENV_1
+            - shipctl get_integration_field kv-subint KEY_VALUE_ENV_2            
