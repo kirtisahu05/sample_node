@@ -45,7 +45,6 @@ integrations:
 
 generic:
     - integrationName: slack-subint
-      type: slackKey
       recipients:
         - "@ankul"
       on_success: always 
