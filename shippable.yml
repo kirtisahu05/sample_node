@@ -111,6 +111,7 @@ jobs:
     steps:
       - IN: manifest-job-shared
       - IN: repo-resource-shared
+        showBuildStatus:  true
       - IN: docker-shared-res
       - IN: ssh-shared-res
       - IN: kv-shared-res
@@ -165,7 +166,8 @@ jobs:
       - kv-subint
     steps:
       - IN: manifest-job-shared
-      - IN: repo-resource-shared
+      - IN: repo-resource
+        showBuildStatus:  true
       - TASK:
           script:
             - echo ================ docker-subint ==================
