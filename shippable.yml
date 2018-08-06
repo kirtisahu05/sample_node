@@ -43,9 +43,9 @@ integrations:
         - ankul@shippable.com
       on_success: always
   
-  hub:
-    - integrationName: docker-shared-subint
-      type: dockerRegistryLogin
+#  hub:
+#    - integrationName: docker-shared-subint
+#      type: dockerRegistryLogin
 #  generic:
 #    - integrationName: kv-shared-subint   
 
