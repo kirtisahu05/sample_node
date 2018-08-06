@@ -58,7 +58,7 @@ resources:
       sourceName: "ankul/app"
       versionName: latest
 
-  - name: repo_resource
+  - name: repo-resource
     type: gitRepo
     integration: "github-subint"
     versionTemplate:
