@@ -25,8 +25,8 @@ integrations:
   hub:
     - integrationName: docker-shared-subint
       type: dockerRegistryLogin
-  generic:
-    - integrationName: kv-shared-subint   
+#  generic:
+#    - integrationName: kv-shared-subint   
 
 resources:
   - name: nginx-image-shared
@@ -86,6 +86,28 @@ jobs:
     type: manifest
     steps:
       - IN: nginx-image-shared
+
+  - name: sample_node_runCI
+    type: runCI
+    steps:
+      - IN: manifest-job-shared
+      - IN: repo-resource-shared
+      - IN: docker-shared-res
+      - IN: ssh-shared-res
+      - IN: kv-shared-res
+      - TASK:
+          script:
+            - echo ================ docker-shared-res ==================
+            - shipctl get_integration_resource_keys "docker-shared-res"
+            - shipctl get_integration_resource_field "docker-shared-res" "url"
+            - echo ================ ssh-shared-res ==================
+            - shipctl get_integration_resource_keys ssh-shared-res
+            - shipctl get_integration_resource_field ssh-shared-res publicKey
+            - shipctl get_integration_resource_field ssh-shared-res privateKey
+            - echo ================ kv-shared-res ==================
+            - shipctl get_integration_resource_keys kv-shared-res
+            - shipctl get_integration_resource_field kv-shared-res KEY_VALUE_ENV_1
+            - shipctl get_integration_resource_field kv-shared-res KEY_VALUE_ENV_2       
 
   - name: runSh-shared-indirect
     type: runSh
