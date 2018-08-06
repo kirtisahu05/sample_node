@@ -11,9 +11,17 @@ build:
   ci:
     - echo true1
     - printenv
-    - docker pull ankul/nginx:random
-    - docker tag ankul/nginx:random ankul/nginx:random_$BUILD_NUMBER
-    - docker push ankul/nginx:random_$BUILD_NUMBER
+    - echo ================ docker-shared-res ==================
+    - shipctl get_integration_resource_keys "docker-shared-res"
+    - shipctl get_integration_resource_field "docker-shared-res" "url"
+    - echo ================ ssh-shared-res ==================
+    - shipctl get_integration_resource_keys ssh-shared-res
+    - shipctl get_integration_resource_field ssh-shared-res publicKey
+    - shipctl get_integration_resource_field ssh-shared-res privateKey
+    - echo ================ kv-shared-res ==================
+    - shipctl get_integration_resource_keys kv-shared-res
+    - shipctl get_integration_resource_field kv-shared-res KEY_VALUE_ENV_1
+    - shipctl get_integration_resource_field kv-shared-res KEY_VALUE_ENV_2       
 
 integrations:
   notifications: 
@@ -95,19 +103,6 @@ jobs:
       - IN: docker-shared-res
       - IN: ssh-shared-res
       - IN: kv-shared-res
-      - TASK:
-          script:
-            - echo ================ docker-shared-res ==================
-            - shipctl get_integration_resource_keys "docker-shared-res"
-            - shipctl get_integration_resource_field "docker-shared-res" "url"
-            - echo ================ ssh-shared-res ==================
-            - shipctl get_integration_resource_keys ssh-shared-res
-            - shipctl get_integration_resource_field ssh-shared-res publicKey
-            - shipctl get_integration_resource_field ssh-shared-res privateKey
-            - echo ================ kv-shared-res ==================
-            - shipctl get_integration_resource_keys kv-shared-res
-            - shipctl get_integration_resource_field kv-shared-res KEY_VALUE_ENV_1
-            - shipctl get_integration_resource_field kv-shared-res KEY_VALUE_ENV_2       
 
   - name: runSh-shared-indirect
     type: runSh
