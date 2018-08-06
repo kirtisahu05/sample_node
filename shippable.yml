@@ -31,18 +31,25 @@ integrations:
 #        - "#test-5148"
 #      on_start: always
     
-    - integrationName: slack-subint
-      type: slackKey
-      recipients:
-        - "@ankul"
-      on_success: always
+#    - integrationName: slack-subint
+#      type: slackKey
+#      recipients:
+#        - "@ankul"
+#      on_success: always
 
     - integrationName: email
       type: email
       recipients:
         - ankul@shippable.com
       on_success: always
-  
+
+generic:
+    - integrationName: slack-subint
+      type: slackKey
+      recipients:
+        - "@ankul"
+      on_success: always 
+
 #  hub:
 #    - integrationName: docker-shared-subint
 #      type: dockerRegistryLogin
