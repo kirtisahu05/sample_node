@@ -35,7 +35,12 @@ integrations:
       type: slackKey
       recipients:
         - "@ankul"
-      on_success: always      
+      on_success: always
+
+    - integrationName: email
+      type: email
+      recipients:
+        - ankul@shippable.com
   
   hub:
     - integrationName: docker-shared-subint
