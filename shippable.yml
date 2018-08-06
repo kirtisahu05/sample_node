@@ -21,7 +21,7 @@ integrations:
 #      on_start: always
     
     - integrationName: slack-subint
-      type: slackKey
+      type: slack
       recipients:
         - "@ankul"
       on_success: always
