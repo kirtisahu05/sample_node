@@ -118,7 +118,7 @@ jobs:
     integrations:
       - docker-shared-subint
       - ssh-shared-subint
-      - kv-shared-res
+      - kv-shared-subint
     steps:
       - IN: manifest-job-shared
       - TASK:
