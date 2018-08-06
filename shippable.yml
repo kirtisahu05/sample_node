@@ -11,6 +11,9 @@ build:
   ci:
     - echo true1
     - printenv
+    - docker pull ankul/nginx:random
+    - docker tag ankul/nginx:random ankul/nginx:random_$BUILD_NUMBER
+    - docker push ankul/nginx:random_$BUILD_NUMBER
 
 integrations:
   notifications: 
