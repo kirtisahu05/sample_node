@@ -9,7 +9,7 @@ runtime:
 
 build:
   ci:
-    - echo true
+    - echo true1
     - printenv
 
 integrations:
