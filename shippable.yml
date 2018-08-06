@@ -13,14 +13,16 @@ build:
 
 integrations:
   notifications: 
-    - integrationName: slack-shared-subint
+    - integrationName: slack-subint
       type: slackKey
       recipients:
         - "#test-5148"
       on_start: always
   hub:
-    - integrationName: docker-shared-subint
+    - integrationName: docker-subint
       type: dockerRegistryLogin
+  generic:
+    - integrationName: kv-subint   
 
 resources:
   - name: nginx-image-shared
