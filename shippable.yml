@@ -93,6 +93,7 @@ jobs:
       nodePool: default_cluster
     steps:
       - IN: manifest-job-shared
+      - IN: repo-resource-shared
       - IN: docker-shared-res
       - IN: ssh-shared-res
       - IN: kv-shared-res
@@ -121,6 +122,7 @@ jobs:
       - kv-shared-subint
     steps:
       - IN: manifest-job-shared
+      - IN: repo-resource-shared
       - TASK:
           script:
             - echo ================ docker-shared-subint ==================
@@ -146,6 +148,7 @@ jobs:
       - kv-subint
     steps:
       - IN: manifest-job-shared
+      - IN: repo-resource-shared
       - TASK:
           script:
             - echo ================ docker-subint ==================
