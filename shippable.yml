@@ -61,7 +61,7 @@ resources:
     type: gitRepo
     integration: "github-shared-subint"
     versionTemplate:
-      sourceName: "ankul-shippable/sample_java"
+      sourceName: "ankul-shippable/sample_c"
       branch: "master"
 
   - name: nginx-image
@@ -75,7 +75,7 @@ resources:
     type: gitRepo
     integration: "github-subint"
     versionTemplate:
-      sourceName: "ankul-shippable/sample_java"
+      sourceName: "ankul-shippable/sample_c"
       branch: "master"
 
   - name: docker-shared-res
