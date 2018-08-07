@@ -14,11 +14,11 @@ build:
 
 integrations:
   notifications: 
-#    - integrationName: slack-shared-subint
-#      type: slackKey
-#      recipients:
-#        - "#test-5148"
-#      on_start: always
+    - integrationName: slack-shared-subint
+      type: slackKey
+      recipients:
+        - "#test-5148"
+      on_start: always
     
     - integrationName: slack-subint
       type: slackKey
