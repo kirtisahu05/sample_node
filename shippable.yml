@@ -172,7 +172,7 @@ jobs:
   - name: runSh-direct
     type: runSh
     runtime:
-      nodePool: default_cluster
+      nodePool: custom_one
     integrations:
       - docker-subint
       - ssh-subint
