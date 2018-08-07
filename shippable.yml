@@ -120,7 +120,7 @@ jobs:
   - name: runSh-shared-indirect
     type: runSh
     runtime:
-      nodePool: default_cluster
+      nodePool: custom_one
     steps:
       - IN: manifest-job-shared
       - IN: repo-resource-shared
@@ -146,7 +146,7 @@ jobs:
   - name: runSh-shared-direct
     type: runSh
     runtime:
-      nodePool: default_cluster
+      nodePool: custom_one
     integrations:
       - docker-shared-subint
       - ssh-shared-subint
