@@ -19,6 +19,12 @@ integrations:
       recipients:
         - "#test-5148"
       on_start: always
+
+    - integrationName: webhook-subint   
+      type: webhook
+      payload:
+        - foo=foo1
+        - bar=baar
     
     - integrationName: slack-subint
       type: slackKey
