@@ -14,6 +14,12 @@ build:
 
 integrations:
   notifications: 
+    - integrationName: webhook-subint
+      type: webhook
+      payload:
+        - foo=foo1
+        - bar=baar
+
     - integrationName: slack-shared-subint
       type: slackKey
       recipients:
@@ -35,12 +41,7 @@ integrations:
 #  hub:
 #    - integrationName: docker-shared-subint
 #      type: dockerRegistryLogin
-  generic:
-    - integrationName: webhook-subint
-      payload:
-        - foo=foo1
-        - bar=baar
-      
+#  generic:
 #    - integrationName: kv-shared-subint   
 
 resources:
