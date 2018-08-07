@@ -20,12 +20,6 @@ integrations:
         - "#test-5148"
       on_start: always
 
-    - integrationName: webhook-subint   
-      type: webhook
-      payload:
-        - foo=foo1
-        - bar=baar
-    
     - integrationName: slack-subint
       type: slackKey
       recipients:
@@ -41,7 +35,12 @@ integrations:
 #  hub:
 #    - integrationName: docker-shared-subint
 #      type: dockerRegistryLogin
-#  generic:
+  generic:
+    - integrationName: webhook-subint
+      payload:
+        - foo=foo1
+        - bar=baar
+      
 #    - integrationName: kv-shared-subint   
 
 resources:
