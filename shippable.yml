@@ -178,7 +178,6 @@ jobs:
       - ssh-subint
       - kv-subint
     steps:
-      - IN: manifest-job-shared
       - IN: repo-resource
         showBuildStatus:  true
       - TASK:
