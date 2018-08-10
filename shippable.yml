@@ -30,6 +30,10 @@ resources:
   - name: pem-res
     type: integration
     integration: "pem-subint" 
+    
+  - name: ssh-res
+    type: integration
+    integration: "ssh-subint"     
 
 jobs:
   - name: runSh-job
@@ -38,6 +42,7 @@ jobs:
       nodePool: default_cluster
     steps:
       - IN: pem-res
+      - IN: ssh-res
       - TASK:
           script:
             - printenv
