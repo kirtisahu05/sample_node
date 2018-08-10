@@ -14,24 +14,6 @@ build:
 
 integrations:
   notifications: 
-    - integrationName: webhook-subint
-      type: webhook
-      payload:
-        - foo=foo1
-        - bar=baar
-
-    - integrationName: slack-shared-subint
-      type: slackKey
-      recipients:
-        - "#test-5148"
-      on_start: always
-
-    - integrationName: slack-subint
-      type: slackKey
-      recipients:
-        - "@ankul"
-      on_success: always
-
     - integrationName: email
       type: email
       recipients:
@@ -45,146 +27,18 @@ integrations:
 #    - integrationName: kv-shared-subint   
 
 resources:
-  - name: nginx-image-shared
-    type: image
-    integration: "docker-shared-subint"
-    versionTemplate:
-      sourceName: "ankul/app"
-      versionName: latest
-
-  - name: repo-resource-shared
-    type: gitRepo
-    integration: "github-shared-subint"
-    versionTemplate:
-      sourceName: "ankul-shippable/sample_c"
-      branch: "master"
-
-  - name: nginx-image
-    type: image
-    integration: "docker-subint"
-    versionTemplate:
-      sourceName: "ankul/app"
-      versionName: latest
-
-  - name: repo-resource
-    type: gitRepo
-    integration: "github-subint"
-    versionTemplate:
-      sourceName: "ankul-shippable/sample_c"
-      branch: "master"
-
-  - name: docker-shared-res
+  - name: pem-res
     type: integration
-    integration: "docker-shared-subint" 
-    
-  - name: ssh-shared-res
-    type: integration
-    integration: "ssh-shared-subint"    
-    
-  - name: kv-shared-res
-    type: integration
-    integration: "kv-shared-subint" 
-
-  - name: docker-res
-    type: integration
-    integration: "docker-subint" 
-    
-  - name: ssh-res
-    type: integration
-    integration: "ssh-subint"
-  
-  - name: kv-res
-    type: integration
-    integration: "kv-subint"  
+    integration: "pem-subint" 
 
 jobs:
-  - name: manifest-job-shared
-    type: manifest
-    steps:
-      - IN: nginx-image-shared
-
-  - name: sample_node_runCI
-    type: runCI
-    steps:
-      - IN: manifest-job-shared
-      - IN: repo-resource-shared
-      - IN: docker-shared-res
-      - IN: ssh-shared-res
-      - IN: kv-shared-res
-
-  - name: runSh-shared-indirect
+  - name: runSh-job
     type: runSh
     runtime:
-      nodePool: custom_one
+      nodePool: default_cluster
     steps:
-      - IN: manifest-job-shared
-      - IN: repo-resource-shared
-        showBuildStatus:  true
-      - IN: docker-shared-res
-      - IN: ssh-shared-res
-      - IN: kv-shared-res
+      - IN: pem-res
       - TASK:
           script:
-            - echo ================ docker-shared-res ==================
-            - shipctl get_integration_resource_keys "docker-shared-res"
-            - shipctl get_integration_resource_field "docker-shared-res" "url"
-            - echo ================ ssh-shared-res ==================
-            - shipctl get_integration_resource_keys ssh-shared-res
-            - shipctl get_integration_resource_field ssh-shared-res publicKey
-            - shipctl get_integration_resource_field ssh-shared-res privateKey
-            - echo ================ kv-shared-res ==================
-            - shipctl get_integration_resource_keys kv-shared-res
-            - shipctl get_integration_resource_field kv-shared-res KEY_VALUE_ENV_1
-            - shipctl get_integration_resource_field kv-shared-res KEY_VALUE_ENV_2            
-            
-
-  - name: runSh-shared-direct
-    type: runSh
-    runtime:
-      nodePool: custom_one
-    integrations:
-      - docker-shared-subint
-      - ssh-shared-subint
-      - kv-shared-subint
-    steps:
-      - IN: manifest-job-shared
-      - IN: repo-resource-shared
-      - TASK:
-          script:
-            - echo ================ docker-shared-subint ==================
-            - shipctl get_integration_keys docker-shared-subint
-            - shipctl get_integration_field docker-shared-subint url
-            - echo ================ ssh-shared-subint ==================
-            - shipctl get_integration_keys ssh-shared-subint
-            - shipctl get_integration_field ssh-shared-subint publicKey
-            - shipctl get_integration_field ssh-shared-subint privateKey
-            - echo ================ kv-shared-subint ==================
-            - shipctl get_integration_keys kv-shared-subint
-            - shipctl get_integration_field kv-shared-subint KEY_VALUE_ENV_1
-            - shipctl get_integration_field kv-shared-subint KEY_VALUE_ENV_2            
-
-
-  - name: runSh-direct
-    type: runSh
-    runtime:
-      nodePool: custom_one
-    integrations:
-      - docker-subint
-      - ssh-subint
-      - kv-subint
-    steps:
-      - IN: repo-resource
-        showBuildStatus:  true
-      - TASK:
-          script:
-            - echo ================ docker-subint ==================
-            - shipctl get_integration_keys docker-subint
-            - shipctl get_integration_field docker-subint url
-            - echo ================ ssh-subint ==================
-            - shipctl get_integration_keys ssh-subint
-            - shipctl get_integration_field ssh-subint publicKey
-            - shipctl get_integration_field ssh-subint privateKey
-            - echo ================ kv-subint ==================
-            - shipctl get_integration_keys kv-subint
-            - shipctl get_integration_field kv-subint KEY_VALUE_ENV_1
-            - shipctl get_integration_field kv-subint KEY_VALUE_ENV_2            
+            - printenv
+   
