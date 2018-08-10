@@ -41,4 +41,5 @@ jobs:
       - TASK:
           script:
             - printenv
+            - cat PEMRES_KEYPATH
    
