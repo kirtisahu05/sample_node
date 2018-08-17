@@ -12,13 +12,13 @@ build:
     - echo true1
     - printenv
 
-integrations:
-  notifications: 
-    - integrationName: email
-      type: email
-      recipients:
-        - ankul@shippable.com
-      on_success: always
+#integrations:
+#  notifications: 
+#    - integrationName: email
+#      type: email
+#      recipients:
+#        - ankul@shippable.com
+#      on_success: always
 
 #  hub:
 #    - integrationName: docker-shared-subint
@@ -27,24 +27,9 @@ integrations:
 #    - integrationName: kv-shared-subint   
 
 resources:
-  - name: pem-res
+  - name: sample_c_repo
     type: integration
-    integration: "pem-subint" 
-    
-  - name: ssh-res
-    type: integration
-    integration: "ssh-subint"     
-
-jobs:
-  - name: runSh-job
-    type: runSh
-    runtime:
-      nodePool: default_cluster
-    steps:
-      - IN: pem-res
-      - IN: ssh-res
-      - TASK:
-          script:
-            - printenv
-            - cat $PEMRES_KEYPATH
-   
+    integration: "github-subint"
+    versionTemplate:
+      sourceName: ankul-shippable/sample_c
+      branch: master
