@@ -27,7 +27,7 @@ build:
 
 resources:
   - name: sample_c_repo
-    type: integration
+    type: gitRepo
     integration: "github-subint"
     versionTemplate:
       sourceName: ankul-shippable/sample_c
