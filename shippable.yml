@@ -19,7 +19,6 @@ build:
 #      recipients:
 #        - ankul@shippable.com
 #      on_success: always
-
 #  hub:
 #    - integrationName: docker-shared-subint
 #      type: dockerRegistryLogin
@@ -33,3 +32,15 @@ resources:
     versionTemplate:
       sourceName: ankul-shippable/sample_c
       branch: master
+      
+jobs:
+  - name: runSh-job
+    type: runSh
+    runtime:
+      nodePool: default_cluster
+    steps:
+      - IN: sample_c_repo
+      - TASK:
+          script:
+            - printenv
+      
