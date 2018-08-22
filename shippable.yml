@@ -43,5 +43,4 @@ jobs:
       - TASK:
           script:
             - printenv
-            - echo true14
-      
+            - echo true15
