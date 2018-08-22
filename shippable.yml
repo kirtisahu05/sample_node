@@ -43,4 +43,4 @@ jobs:
       - TASK:
           script:
             - printenv
-            - echo true1
+            - echo true2
