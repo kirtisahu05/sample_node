@@ -37,7 +37,7 @@ resources:
     type: gitRepo
     integration: "github-subint"
     versionTemplate:
-      sourceName: ankul-shippable/sample_node
+      sourceName: ankul-shippable/sample_java
       branch: master_2  
       
 jobs:
