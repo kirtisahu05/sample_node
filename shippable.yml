@@ -51,4 +51,4 @@ jobs:
       - TASK:
           script:
             - printenv
-            - echo true7
+            - echo true8
