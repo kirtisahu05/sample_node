@@ -38,7 +38,7 @@ resources:
     integration: "github-subint"
     versionTemplate:
       sourceName: ankul-shippable/sample_java
-      branch: master_2  
+      branch: master
       
 jobs:
   - name: runSh-job
