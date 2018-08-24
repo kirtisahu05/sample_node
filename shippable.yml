@@ -26,12 +26,19 @@ build:
 #    - integrationName: kv-shared-subint   
 
 resources:
-  - name: sample_c_repo
+  - name: node_master
     type: gitRepo
     integration: "github-subint"
     versionTemplate:
-      sourceName: ankul-shippable/sample_c
+      sourceName: ankul-shippable/sample_node
       branch: master
+      
+  - name: node_master
+    type: gitRepo
+    integration: "github-subint"
+    versionTemplate:
+      sourceName: ankul-shippable/sample_node
+      branch: master_2  
       
 jobs:
   - name: runSh-job
@@ -39,7 +46,8 @@ jobs:
     runtime:
       nodePool: default_cluster
     steps:
-      - IN: sample_c_repo
+      - IN: node_master
+      - IN: node_master_2
       - TASK:
           script:
             - printenv
