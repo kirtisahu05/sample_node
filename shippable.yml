@@ -33,18 +33,8 @@ resources:
       sourceName: ankul-shippable/sample_c
       branch: master
       
-  - name: trigger	
-    type: time		
-    versionTemplate:	
-      interval: "*/3 * * * *"
 
-jobs:
-  - name: sample_c_runCI
-    type: runCI
-    steps:
-      - IN: trigger
-
-      
+jobs: 
 #  - name: runSh-job
 #    type: runSh
 #    runtime:
