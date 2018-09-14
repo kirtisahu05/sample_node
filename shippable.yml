@@ -32,16 +32,26 @@ resources:
     versionTemplate:	
       sourceName: ankul-shippable/sample_c
       branch: master
+      
+  - name: trigger	
+    type: time		
+    versionTemplate:	
+      interval: "*/3 * * * *"
 
 jobs:
-  - name: runSh-job
-    type: runSh
-    runtime:
-      nodePool: default_cluster
+  - name: sample_c_runCI
+    type: runCI
     steps:
-      - IN: sample_c
-      - OUT: sample_c_ciRepo
-        replicate: sample_c
-      - TASK:
-          script:
-            - printenv
+      - IN: trigger
+
+      
+#  - name: runSh-job
+#    type: runSh
+#    runtime:
+#      nodePool: default_cluster
+#    steps:
+#      - OUT: sample_c_ciRepo
+#        replicate: sample_c
+#      - TASK:
+#          script:
+#            - printenv
