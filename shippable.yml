@@ -39,6 +39,7 @@ jobs:
     runtime:
       nodePool: default_cluster
     steps:
+      - IN: sample_c
       - OUT: sample_c_ciRepo
         replicate: sample_c
       - TASK:
