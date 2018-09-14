@@ -23,7 +23,15 @@ build:
 #    - integrationName: docker-shared-subint
 #      type: dockerRegistryLogin
 #  generic:
-#    - integrationName: kv-shared-subint   
+#    - integrationName: kv-shared-subint 
+
+resources:
+  - name: sample_c	
+    type: gitRepo	
+    integration: "github-subint"	
+    versionTemplate:	
+      sourceName: ankul-shippable/sample_c
+      branch: master
 
 jobs:
   - name: runSh-job
@@ -31,11 +39,8 @@ jobs:
     runtime:
       nodePool: default_cluster
     steps:
+      - OUT: sample_c_ciRepo
+        replicate: sample_c
       - TASK:
           script:
             - printenv
-
-  - name: sample_c_runCI
-    type: runCI
-    steps:
-      - IN: runSh-job
