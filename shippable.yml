@@ -6,6 +6,14 @@ node_js:
 runtime:
   nodePool: default_cluster
 
+env:
+  global:
+    - FOO=FUBU
+
+  matrix:
+    - M1=ONE
+    - M2=TWO
+    - M3=THREE
 
 build:
   ci:
@@ -26,21 +34,17 @@ build:
 #    - integrationName: kv-shared-subint 
 
 resources:
-  - name: sample_c	
-    type: gitRepo	
-    integration: "github-subint"	
+  - name: time	
+    type: time	
     versionTemplate:	
-      sourceName: ankul-shippable/sample_c
-      branch: master
+      interval: "*/20 * * * *"
       
 
 jobs: 
-#  - name: runSh-job
-#    type: runSh
-#    runtime:
-#      nodePool: default_cluster
-#    steps:
-#      - OUT: sample_c_ciRepo
+  - name: sample_node_runCI
+    type: runCI
+    steps:
+      - IN: time
 #        replicate: sample_c
 #      - TASK:
 #          script:
