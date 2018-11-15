@@ -7,3 +7,10 @@ build:
   ci:
     - printenv
     - echo true
+
+jobs:
+  name: test-job
+  type: runSh
+  steps:
+    - TASK:
+      - script: shipctl put_resource_state_multi "$JOB_NAME" "UUID=uuid" "IMAGE_NAME=lol"
