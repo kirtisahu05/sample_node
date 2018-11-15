@@ -13,6 +13,6 @@ jobs:
     type: runSh
     steps:
       - TASK:
-        - script: shipctl copy_file_from_prev_state version.json
+        - script: shipctl copy_file_from_prev_state version.json .
         - script: cat version.json
         - script: shipctl put_resource_state_multi "$JOB_NAME" "UUID=uuid2" "IMAGE_NAME=lol2"
