@@ -1,7 +1,0 @@
-resources:
-  - name: slack-notifications
-    type: notification
-    integration: slack-subint
-    pointer:
-      recipients:
-        - "#test-5148"
