@@ -12,7 +12,6 @@ env:
 
   matrix:
     - M1=ONE
-    - M2=TWO
 
 build:
   ci:
@@ -36,7 +35,7 @@ resources:
   - name: time	
     type: time	
     versionTemplate:	
-      interval: "*/7 * * * *"
+      interval: "*/1 * * * *"
       
 
 jobs: 
@@ -44,7 +43,14 @@ jobs:
     type: runCI
     steps:
       - IN: time
-#        replicate: sample_c
-#      - TASK:
-#          script:
-#            - printenv
+      - TASK:
+          script:
+            - printenv
+            
+  - name: sample_ruby_runCI
+    type: runCI
+    steps:
+      - IN: time
+      - TASK:
+          script:
+            - printenv
