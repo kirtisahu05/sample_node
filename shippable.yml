@@ -8,7 +8,7 @@ runtime:
 
 env:
   global:
-    - FOO=FUBU
+    - FOO=FUBU2
 
   matrix:
     - M1=ONE
