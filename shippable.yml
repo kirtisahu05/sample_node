@@ -8,14 +8,13 @@ runtime:
 
 env:
   global:
-    - FOO=FUBU3
-
+    - secure: PHdYfWHv+a7/a4M0kHS5NxZbZMDwn3BFtNZnQdSEnYcfvrjHhFT8v+4NBb4lhEJEPX3Cmz7Rcxz0+Sh/GKTcBu9Zu3MjBemNiyV3LgMXaaBTWCk/nBQCskzNvGoCUg/615RJsw7aCYAyQmhmtoZgJwt3WhmYvt5Y7ytIx4wQawz3PUe1woaXBgXou96D48KWiSwLm0oLDYG5zBDMM8aswwk1+mEH22t8LD7EimdEqbBVhEmdMGNqpYDrdSFsRBsDhU4DyDgS9iowFdFuyb7EDpNNKIzFXpi1WdNsnzQe+AFlZjQCeMbmFQFKVCmxxnpuhoddvJBmGGKiePfQlydeDw==
   matrix:
-    - M1=ONE
+    - foo: bar 
+    - foo: fizz
 
 build:
   ci:
-    - echo true1
     - printenv
 
 #integrations:
