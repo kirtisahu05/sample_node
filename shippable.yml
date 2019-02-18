@@ -13,6 +13,6 @@ jobs:
     type: runSh
     steps:
       - TASK:
-        - script: shipctl copy_file_from_prev_state version.json .
-        - script: cat version.json
-        - script: shipctl put_resource_state_multi "$JOB_NAME" "UUID=uuid2" "IMAGE_NAME=lol2"
+        - script: echo $PREVIOUS_VERSION_NAME
+        - script: echo $RANOM_TEST_ENV
+        - script: shipctl put_resource_state_multi "$JOB_NAME" "PREVIOUS_VERSION_NAME=build_$BUILD_NUMBER" "RANOM_TEST_ENV=test_$BUILD_NUMBER"
