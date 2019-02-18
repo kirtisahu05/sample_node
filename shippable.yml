@@ -6,7 +6,8 @@ node_js:
 build:
   ci:
     - shipctl copy_file_from_prev_state version.json .
-    - cat version.json
+    - ls -al
+    - shipctl get_resource_version_key "$JOB_NAME" "RANOM_TEST_ENV"
     - echo $PREVIOUS_VERSION_NAME
     - echo $RANOM_TEST_ENV
     - shipctl put_resource_state_multi "$JOB_NAME" "PREVIOUS_VERSION_NAME=build_$BUILD_NUMBER" "RANOM_TEST_ENV=test_$BUILD_NUMBER"
