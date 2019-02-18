@@ -5,8 +5,9 @@ node_js:
 
 build:
   ci:
-    - printenv
-    - echo true
+    - echo $PREVIOUS_VERSION_NAME
+    - echo $RANOM_TEST_ENV
+    - shipctl put_resource_state_multi "$JOB_NAME" "PREVIOUS_VERSION_NAME=build_$BUILD_NUMBER" "RANOM_TEST_ENV=test_$BUILD_NUMBER"
 
 jobs:
   - name: test-job
