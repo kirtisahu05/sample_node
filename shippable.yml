@@ -41,6 +41,3 @@ jobs:
     type: runCI
     steps:
       - IN: time
-      - TASK:
-          script:
-            - printenv
