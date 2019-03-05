@@ -33,19 +33,11 @@ resources:
   - name: time	
     type: time	
     versionTemplate:	
-      interval: "*/30 * * * *"
+      interval: "*/20 * * * *"
       
 
-jobs: 
-  - name: sample_node_runCI
-    type: runCI
-    steps:
-      - IN: time
-      - TASK:
-          script:
-            - printenv
-            
-  - name: sample_ruby_runCI
+jobs:            
+  - name: railstest_runCI
     type: runCI
     steps:
       - IN: time
