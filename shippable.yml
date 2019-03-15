@@ -30,14 +30,9 @@ build:
 #    - integrationName: kv-shared-subint 
 
 resources:
-  - name: time	
-    type: time	
-    versionTemplate:	
-      interval: "*/20 * * * *"
-      
-
-jobs:            
-  - name: railstest_runCI
-    type: runCI
-    steps:
-      - IN: time
+  - name: sample_node	
+    type: gitRepo
+    integration: github-subint
+    versionTemplate:
+      sourceName: ankul-shippable/sample_node
+      branch: master
